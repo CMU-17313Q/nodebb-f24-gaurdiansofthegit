@@ -1169,9 +1169,41 @@ describe('Flags', () => {
 					assert.strictEqual(statusCode, 200, `${opts.method.toUpperCase()} ${opts.uri} => ${statusCode}`);
 				}
 			});
+			// COPILOT ASSISTED CODE
+			describe('.getFlagIdByTarget()', () => {
+				it('should return the flagId for a post', async () => {
+					// Create a new post
+					const { postData } = await Topics.post({
+						cid: category.cid,
+						uid: uid1,
+						title: utils.generateUUID(),
+						content: utils.generateUUID(),
+					});
+					const postId = postData.pid;
+
+					const flagId = await Flags.create('post', postId, uid1, 'Test flag');
+					const result = await Flags.getFlagIdByTarget('post', postId);
+					assert.strictEqual(result, flagId.flagId);
+					await Flags.purge([flagId.flagId]); // Cleanup
+				});
+
+				it('should return the flagId for a user', async () => {
+					const userId = uid1;
+					const flagId = await Flags.create('user', userId, uid1, 'Test flag');
+					const result = await Flags.getFlagIdByTarget('user', userId);
+					assert.strictEqual(result, flagId.flagId);
+					await Flags.purge([flagId.flagId]); // Cleanup
+				});
+
+				it('should throw an error when type is invalid', async () => {
+					await assert.rejects(
+						Flags.getFlagIdByTarget('invalidType', 'someId'),
+						new Error('[[error:invalid-data]]')
+					);
+				});
+			});
 
 			it('should NOT allow access to privileged endpoints to moderators if the flag target is a post in a cid they DO NOT moderate', async () => {
-				// This is a new category the user will moderate, but the flagged post is in a different category
 				const { cid } = await Categories.create({
 					name: utils.generateUUID(),
 				});
