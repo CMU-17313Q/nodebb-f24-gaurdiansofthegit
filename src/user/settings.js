@@ -1,8 +1,6 @@
-
 'use strict';
 
 const validator = require('validator');
-
 const meta = require('../meta');
 const db = require('../database');
 const plugins = require('../plugins');
@@ -16,6 +14,7 @@ module.exports = function (User) {
 		postsPerPage: 20,
 		topicsPerPage: 20,
 	};
+
 	User.getSettings = async function (uid) {
 		if (parseInt(uid, 10) <= 0) {
 			const isSpider = parseInt(uid, 10) === -1;
@@ -96,32 +95,31 @@ module.exports = function (User) {
 		return defaultValue;
 	}
 
+	function validatePaginationValue(value, max) {
+		console.log('pagination is saved');
+		if (!value || parseInt(value, 10) <= 1 || parseInt(value, 10) > max) {
+			throw new Error(`[[error:invalid-pagination-value, 2, ${max}]]`);
+		}
+	}
+
+	function validateLanguage(value, languageCodes) {
+		console.log('language is saved');
+		if (value && !languageCodes.includes(value)) {
+			throw new Error('[[error:invalid-language]]');
+		}
+	}
+
 	User.saveSettings = async function (uid, data) {
 		const maxPostsPerPage = meta.config.maxPostsPerPage || 20;
-		if (
-			!data.postsPerPage ||
-			parseInt(data.postsPerPage, 10) <= 1 ||
-			parseInt(data.postsPerPage, 10) > maxPostsPerPage
-		) {
-			throw new Error(`[[error:invalid-pagination-value, 2, ${maxPostsPerPage}]]`);
-		}
+		validatePaginationValue(data.postsPerPage, maxPostsPerPage);
 
 		const maxTopicsPerPage = meta.config.maxTopicsPerPage || 20;
-		if (
-			!data.topicsPerPage ||
-			parseInt(data.topicsPerPage, 10) <= 1 ||
-			parseInt(data.topicsPerPage, 10) > maxTopicsPerPage
-		) {
-			throw new Error(`[[error:invalid-pagination-value, 2, ${maxTopicsPerPage}]]`);
-		}
+		validatePaginationValue(data.topicsPerPage, maxTopicsPerPage);
 
 		const languageCodes = await languages.listCodes();
-		if (data.userLang && !languageCodes.includes(data.userLang)) {
-			throw new Error('[[error:invalid-language]]');
-		}
-		if (data.acpLang && !languageCodes.includes(data.acpLang)) {
-			throw new Error('[[error:invalid-language]]');
-		}
+		validateLanguage(data.userLang, languageCodes);
+		validateLanguage(data.acpLang, languageCodes);
+
 		data.userLang = data.userLang || meta.config.defaultLang;
 
 		plugins.hooks.fire('action:user.saveSettings', { uid: uid, settings: data });
@@ -149,12 +147,14 @@ module.exports = function (User) {
 			categoryTopicSort: data.categoryTopicSort,
 			topicPostSort: data.topicPostSort,
 		};
+
 		const notificationTypes = await notifications.getAllNotificationTypes();
 		notificationTypes.forEach((notificationType) => {
 			if (data[notificationType]) {
 				settings[notificationType] = data[notificationType];
 			}
 		});
+
 		const result = await plugins.hooks.fire('filter:user.saveSettings', { uid: uid, settings: settings, data: data });
 		await db.setObject(`user:${uid}:settings`, result.settings);
 		await User.updateDigestSetting(uid, data.dailyDigestFreq);
