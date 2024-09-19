@@ -95,6 +95,7 @@ module.exports = function (User) {
 		return defaultValue;
 	}
 
+	// Co-pilot assisted code
 	function validatePaginationValue(value, max) {
 		console.log('pagination is saved');
 		if (!value || parseInt(value, 10) <= 1 || parseInt(value, 10) > max) {
@@ -102,6 +103,7 @@ module.exports = function (User) {
 		}
 	}
 
+	// Co-pilot assisted code
 	function validateLanguage(value, languageCodes) {
 		console.log('language is saved');
 		if (value && !languageCodes.includes(value)) {
@@ -109,6 +111,7 @@ module.exports = function (User) {
 		}
 	}
 
+	// Co-pilot assisted code
 	User.saveSettings = async function (uid, data) {
 		const maxPostsPerPage = meta.config.maxPostsPerPage || 20;
 		validatePaginationValue(data.postsPerPage, maxPostsPerPage);
