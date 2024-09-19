@@ -44,31 +44,38 @@ module.exports = function (Messaging) {
 
 	function modifyRoomData(rooms, fields) {
 		rooms.forEach((data) => {
-			if (data) {
-				db.parseIntFields(data, intFields, fields);
-				data.roomName = validator.escape(String(data.roomName || ''));
-				data.public = parseInt(data.public, 10) === 1;
-				data.groupChat = data.userCount > 2;
+			if (!data) return;
 
-				if (!fields.length || fields.includes('notificationSetting')) {
-					data.notificationSetting = data.notificationSetting ||
-						(
-							data.public ?
-								Messaging.notificationSettings.ATMENTION :
-								Messaging.notificationSettings.ALLMESSAGES
-						);
-				}
+			db.parseIntFields(data, intFields, fields);
+			data.roomName = validator.escape(String(data.roomName || ''));
+			data.public = parseInt(data.public, 10) === 1;
+			data.groupChat = data.userCount > 2;
 
-				if (data.hasOwnProperty('groups') || !fields.length || fields.includes('groups')) {
-					try {
-						data.groups = JSON.parse(data.groups || '[]');
-					} catch (err) {
-						winston.error(err.stack);
-						data.groups = [];
-					}
+			if (shouldUpdateNotificationSetting(fields)) {
+				data.notificationSetting = data.notificationSetting ||
+					(data.public ?
+						Messaging.notificationSettings.ATMENTION :
+						Messaging.notificationSettings.ALLMESSAGES
+					);
+			}
+
+			if (shouldUpdateGroups(data, fields)) {
+				try {
+					data.groups = JSON.parse(data.groups || '[]');
+				} catch (err) {
+					winston.error(err.stack);
+					data.groups = [];
 				}
 			}
 		});
+	}
+
+	function shouldUpdateNotificationSetting(fields) {
+		return !fields.length || fields.includes('notificationSetting');
+	}
+
+	function shouldUpdateGroups(data, fields) {
+		return data.hasOwnProperty('groups') || !fields.length || fields.includes('groups');
 	}
 
 	Messaging.newRoom = async (uid, data) => {
