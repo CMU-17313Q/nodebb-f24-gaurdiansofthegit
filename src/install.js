@@ -161,23 +161,34 @@ function isValidCIVals(ciVals) {
         ciVals.hasOwnProperty('database');
 }
 
-function handleMissingCIValues(ciVals) {
-	winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
-
-	if (!ciVals.hasOwnProperty('host')) {
-		winston.error('  host');
+function checkCIFlag() {
+	let ciVals;
+	try {
+		ciVals = JSON.parse(nconf.get('ci'));
+	} catch (e) {
+		ciVals = undefined;
 	}
 
-	if (!ciVals.hasOwnProperty('port')) {
-		winston.error('  port');
-	}
+	if (ciVals && ciVals instanceof Object) {
+		if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
+			install.ciVals = ciVals;
+		} else {
+			winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
+			if (!ciVals.hasOwnProperty('host')) {
+				winston.error('  host');
+			}
+			if (!ciVals.hasOwnProperty('port')) {
+				winston.error('  port');
+			}
+			if (!ciVals.hasOwnProperty('database')) {
+				winston.error('  database');
+			}
 
-	if (!ciVals.hasOwnProperty('database')) {
-		winston.error('  database');
+			process.exit();
+		}
 	}
-
-	process.exit();
 }
+
 
 
 async function setupConfig() {
