@@ -137,62 +137,58 @@ function setDatabaseValues() {
 
 // GPT ASSISTED CODE
 function checkCIFlag() {
-    const ciVals = getCIVals();
+	const ciVals = getCIVals();
 
 	if (ciVals && ciVals instanceof Object) {
 		if (isValidCIVals(ciVals)) {
 			install.ciVals = ciVals;
 		} else {
 			handleMissingCIValues(ciVals);
-		
-
-    }
-}
-console.log('CI values are NOT valid');
-
+		}
+	}
+	console.log('CI values are NOT valid');
 }
 
 function getCIVals() {
-    let ciVals;
-    try {
-        ciVals = JSON.parse(nconf.get('ci'));
-    } catch (e) {
-        ciVals = undefined;
+	let ciVals;
+	try {
+		ciVals = JSON.parse(nconf.get('ci'));
+	} catch (e) {
+		ciVals = undefined;
 		console.log('CI values are undefined ');
-
-    }
-    return ciVals;
+	}
+	return ciVals;
 }
 
 function isValidCIVals(ciVals) {
-    if (ciVals && ciVals instanceof Object) {
-        if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
-            return true;
-        }
-    }
-    return false;
+	if (ciVals && ciVals instanceof Object) {
+		if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
+			return true;
+		}
+	}
+	return false;
 }
 
 function handleMissingCIValues(ciVals) {
-    winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
+	winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
 
-    if (!ciVals) {
-        winston.error('  ciVals is undefined');
-    } else {
-        if (!ciVals.hasOwnProperty('host')) {
-            winston.error('  host');
-        }
+	if (!ciVals) {
+		winston.error('  ciVals is undefined');
+	} else {
+		if (!ciVals.hasOwnProperty('host')) {
+			winston.error('  host');
+		}
 
-        if (!ciVals.hasOwnProperty('port')) {
-            winston.error('  port');
-        }
+		if (!ciVals.hasOwnProperty('port')) {
+			winston.error('  port');
+		}
 
-        if (!ciVals.hasOwnProperty('database')) {
-            winston.error('  database');
-        }
-    }
+		if (!ciVals.hasOwnProperty('database')) {
+			winston.error('  database');
+		}
+	}
 
-    process.exit(1);
+	process.exit(1);
 }
 
 async function setupConfig() {
