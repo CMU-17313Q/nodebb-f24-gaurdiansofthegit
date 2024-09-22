@@ -135,61 +135,65 @@ function setDatabaseValues() {
 	install.values.database = nconf.get('database');
 }
 
-// GPT assisted code
+// GPT ASSISTED CODE
 function checkCIFlag() {
-	const ciVals = getCIVals();
+    const ciVals = getCIVals();
 
-	if (isValidCIVals(ciVals)) {
-		install.ciVals = ciVals;
-	} else {
-		handleMissingCIValues(ciVals);
-	}
+	if (ciVals && ciVals instanceof Object) {
+		if (isValidCIVals(ciVals)) {
+			install.ciVals = ciVals;
+		} else {
+			handleMissingCIValues(ciVals);
+		
+
+    }
+}
+console.log('CI values are NOT valid');
+
 }
 
 function getCIVals() {
-	try {
-		return JSON.parse(nconf.get('ci'));
-	} catch (e) {
-		return undefined;
-	}
+    let ciVals;
+    try {
+        ciVals = JSON.parse(nconf.get('ci'));
+    } catch (e) {
+        ciVals = undefined;
+		console.log('CI values are undefined ');
+
+    }
+    return ciVals;
 }
 
 function isValidCIVals(ciVals) {
-	return ciVals && ciVals instanceof Object &&
-        ciVals.hasOwnProperty('host') &&
-        ciVals.hasOwnProperty('port') &&
-        ciVals.hasOwnProperty('database');
+    if (ciVals && ciVals instanceof Object) {
+        if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
+            return true;
+        }
+    }
+    return false;
 }
 
-function checkCIFlag() {
-	let ciVals;
-	try {
-		ciVals = JSON.parse(nconf.get('ci'));
-	} catch (e) {
-		ciVals = undefined;
-	}
+function handleMissingCIValues(ciVals) {
+    winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
 
-	if (ciVals && ciVals instanceof Object) {
-		if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
-			install.ciVals = ciVals;
-		} else {
-			winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
-			if (!ciVals.hasOwnProperty('host')) {
-				winston.error('  host');
-			}
-			if (!ciVals.hasOwnProperty('port')) {
-				winston.error('  port');
-			}
-			if (!ciVals.hasOwnProperty('database')) {
-				winston.error('  database');
-			}
+    if (!ciVals) {
+        winston.error('  ciVals is undefined');
+    } else {
+        if (!ciVals.hasOwnProperty('host')) {
+            winston.error('  host');
+        }
 
-			process.exit();
-		}
-	}
+        if (!ciVals.hasOwnProperty('port')) {
+            winston.error('  port');
+        }
+
+        if (!ciVals.hasOwnProperty('database')) {
+            winston.error('  database');
+        }
+    }
+
+    process.exit(1);
 }
-
-
 
 async function setupConfig() {
 	const configureDatabases = require('../install/databases');
