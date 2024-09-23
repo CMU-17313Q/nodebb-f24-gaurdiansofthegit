@@ -35,6 +35,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
+			// add variable for anonimity
 		};
 
 		if (data.toPid) {
