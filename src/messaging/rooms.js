@@ -41,6 +41,11 @@ module.exports = function (Messaging) {
 		modifyRoomData(roomData, fields);
 		return roomData;
 	};
+	// Copilot generated code
+
+	// print statements
+
+	console.log('Safa');
 
 	function modifyRoomData(rooms, fields) {
 		rooms.forEach((data) => {
@@ -79,6 +84,12 @@ module.exports = function (Messaging) {
 		if (data.hasOwnProperty('roomName')) {
 			checkRoomName(data.roomName);
 		}
+		// print statements
+
+		console.log('Safa');
+
+		// End of Copilot generated code
+
 
 		const now = Date.now();
 		const roomId = await db.incrObjectField('global', 'nextChatRoomId');
