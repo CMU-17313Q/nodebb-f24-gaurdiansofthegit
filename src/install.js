@@ -122,7 +122,7 @@ function checkSetupFlagEnv() {
 	}
 }
 
-<<<<<<< HEAD
+
 function logMissingSetupValues(setupVal) {
 	if (!setupVal['admin:username']) winston.error('  admin:username');
 	if (!setupVal['admin:password']) winston.error('  admin:password');
@@ -195,36 +195,6 @@ function handleMissingCIValues(ciVals) {
     process.exit(1);
 }
 
-=======
-function checkCIFlag() {
-	let ciVals;
-	try {
-		ciVals = JSON.parse(nconf.get('ci'));
-	} catch (e) {
-		ciVals = undefined;
-	}
-
-	if (ciVals && ciVals instanceof Object) {
-		if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
-			install.ciVals = ciVals;
-		} else {
-			winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
-			if (!ciVals.hasOwnProperty('host')) {
-				winston.error('  host');
-			}
-			if (!ciVals.hasOwnProperty('port')) {
-				winston.error('  port');
-			}
-			if (!ciVals.hasOwnProperty('database')) {
-				winston.error('  database');
-			}
-
-			process.exit();
-		}
-	}
-}
-
->>>>>>> d882058f55fc2bc5fd5ff339da895533077f0451
 async function setupConfig() {
 	const configureDatabases = require('../install/databases');
 
