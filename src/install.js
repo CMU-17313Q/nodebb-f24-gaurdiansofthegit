@@ -135,16 +135,6 @@ function setDatabaseValues() {
 	install.values.database = nconf.get('database');
 }
 
-<<<<<<< HEAD
-// GPT assisted code
-function checkCIFlag() {
-	const ciVals = getCIVals();
-
-	if (isValidCIVals(ciVals)) {
-		install.ciVals = ciVals;
-	} else {
-		handleMissingCIValues(ciVals);
-=======
 // GPT ASSISTED CODE
 function checkCIFlag() {
 	const ciVals = getCIVals();
@@ -175,7 +165,6 @@ function isValidCIVals(ciVals) {
 		if (ciVals.hasOwnProperty('host') && ciVals.hasOwnProperty('port') && ciVals.hasOwnProperty('database')) {
 			return true;
 		}
->>>>>>> Ray_Header_Shortcuts_FrontEnd
 	}
 	return false;
 }
@@ -201,40 +190,6 @@ function handleMissingCIValues(ciVals) {
 
 	process.exit(1);
 }
-
-function getCIVals() {
-	try {
-		return JSON.parse(nconf.get('ci'));
-	} catch (e) {
-		return undefined;
-	}
-}
-
-function isValidCIVals(ciVals) {
-	return ciVals && ciVals instanceof Object &&
-        ciVals.hasOwnProperty('host') &&
-        ciVals.hasOwnProperty('port') &&
-        ciVals.hasOwnProperty('database');
-}
-
-function handleMissingCIValues(ciVals) {
-	winston.error('[install/checkCIFlag] required values are missing for automated CI integration:');
-
-	if (!ciVals.hasOwnProperty('host')) {
-		winston.error('  host');
-	}
-
-	if (!ciVals.hasOwnProperty('port')) {
-		winston.error('  port');
-	}
-
-	if (!ciVals.hasOwnProperty('database')) {
-		winston.error('  database');
-	}
-
-	process.exit();
-}
-
 
 async function setupConfig() {
 	const configureDatabases = require('../install/databases');
