@@ -9,6 +9,8 @@
 			<!-- IMPORT admin/partials/category/selector-dropdown-right.tpl -->
 
 			<button data-action="create" class="btn btn-primary btn-sm btn btn-primary btn-sm fw-semibold ff-secondary text-center text-nowrap">[[admin/manage/categories:add-category]]</button>
+
+
 		</div>
 	</div>
 	<div class="text-sm {{{if !breadcrumbs.length }}}hidden{{{ end }}}"><!-- IMPORT admin/partials/breadcrumbs.tpl --></div>
