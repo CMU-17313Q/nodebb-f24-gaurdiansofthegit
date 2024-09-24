@@ -19,7 +19,6 @@ const utils = require('./utils');
 const batch = require('./batch');
 
 const Flags = module.exports;
-
 Flags._states = new Map([
 	['open', {
 		label: '[[flags:state-open]]',
@@ -390,6 +389,7 @@ Flags.deleteNote = async function (flagId, datetime) {
 };
 
 Flags.create = async function (type, id, uid, reason, timestamp, forceFlag = false) {
+	console.log('Flags.created RAYYAN');
 	let doHistoryAppend = false;
 	if (!timestamp) {
 		timestamp = Date.now();
