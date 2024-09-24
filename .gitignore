@@ -21,6 +21,7 @@ provision.sh
 feeds/recent.rss
 .eslintcache
 .svn
+dump.rdb
 
 logs/
 
