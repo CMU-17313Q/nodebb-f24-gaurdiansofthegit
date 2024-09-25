@@ -147,11 +147,11 @@ module.exports = function (Topics) {
 				}
 				// Username override for anonymous posts
 				// given by copilot
-				if (postObj.anonymous) {
-					console.log("for each anonymous post");
-					postObj.user.username = "Anonymous"; // or set to an empty string if preferred
-					postObj.user.displayname = postObj.user.username;
-				}
+				// else if (postObj.anonymous) {
+				// 	console.log("for each anonymous post");
+				// 	postObj.user.username = "Anonymous"; // or set to an empty string if preferred
+				// 	postObj.user.displayname = postObj.user.username;
+				// }	
 
 			}
 		});
