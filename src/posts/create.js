@@ -21,6 +21,7 @@ module.exports = function (Posts) {
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
 		const isAnonymous = data.isAnonymous || false;
+		console.log("isanonymous",data.isAnonymous);
 
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');
@@ -37,7 +38,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: isAnonymous, // Set anonymous flag
+			anonymous: isAnonymous === true, // Set anonymous flag
 		};
 		console.log('Post Data:', postData); // Log the postData object
 
