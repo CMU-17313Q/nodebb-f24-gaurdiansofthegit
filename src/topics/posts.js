@@ -53,23 +53,6 @@ module.exports = function (Topics) {
 			postData[0].index = 0;
 			replies = postData.slice(1);
 		}
-		
-		// Add this block to handle anonymous posts
-		// copilot generated this
-		postData = postData.map(post => {
-			// Debugging: Check if the isAnonymous property exists and its value
-			console.log(`Post ID: ${post.pid}, isAnonymous: ${post.anonymous}`);
-			
-			if (post.anonymous) {
-				console.log("for each anonymous post");
-				return {
-					...post,
-					username: "Anonymous" // or set to an empty string if preferred
-
-				};
-			}
-			return post;
-		});
 
 		Topics.calculatePostIndices(replies, repliesStart);
 		await addEventStartEnd(postData, set, reverse, topicData);
@@ -162,6 +145,13 @@ module.exports = function (Topics) {
 					postObj.user.username = validator.escape(String(postObj.handle));
 					postObj.user.displayname = postObj.user.username;
 				}
+				// Username override for anonymous posts
+				if (postObj.anonymous) {
+					console.log("for each anonymous post");
+					postObj.user.username = "Anonymous"; // or set to an empty string if preferred
+					postObj.user.displayname = postObj.user.username;
+				}
+
 			}
 		});
 
