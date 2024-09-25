@@ -19,7 +19,7 @@ module.exports = function (Topics) {
 		await Topics.updateLastPostTime(postData.tid, postData.timestamp);
 		await Topics.addPostToTopic(postData.tid, postData);
 	};
-
+		
 	Topics.getTopicPosts = async function (topicData, set, start, stop, uid, reverse) {
 		if (!topicData) {
 			return [];
@@ -53,6 +53,23 @@ module.exports = function (Topics) {
 			postData[0].index = 0;
 			replies = postData.slice(1);
 		}
+		
+		// Add this block to handle anonymous posts
+		// copilot generated this
+		postData = postData.map(post => {
+			// Debugging: Check if the isAnonymous property exists and its value
+			console.log(`Post ID: ${post.pid}, isAnonymous: ${post.anonymous}`);
+			
+			if (post.anonymous) {
+				console.log("for each anonymous post");
+				return {
+					...post,
+					username: "Anonymous" // or set to an empty string if preferred
+
+				};
+			}
+			return post;
+		});
 
 		Topics.calculatePostIndices(replies, repliesStart);
 		await addEventStartEnd(postData, set, reverse, topicData);

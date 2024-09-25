@@ -10,6 +10,7 @@ const topics = require('../topics');
 const categories = require('../categories');
 const groups = require('../groups');
 const privileges = require('../privileges');
+const { topic } = require('../middleware/assert');
 
 module.exports = function (Posts) {
 	Posts.create = async function (data) {
