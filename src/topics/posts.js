@@ -140,7 +140,7 @@ module.exports = function (Topics) {
 				postObj.replies = replies[i];
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 				// Username override for anonymous posts
-				//given by copilot
+				//given by copilot, working partially
 				console.log("is it anonymous post",postObj.anonymous);
 
 				if (postObj.anonymous != false) {
