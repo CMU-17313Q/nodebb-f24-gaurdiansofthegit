@@ -146,6 +146,7 @@ module.exports = function (Topics) {
 					postObj.user.displayname = postObj.user.username;
 				}
 				// Username override for anonymous posts
+				// given by copilot
 				if (postObj.anonymous) {
 					console.log("for each anonymous post");
 					postObj.user.username = "Anonymous"; // or set to an empty string if preferred
@@ -198,7 +199,7 @@ module.exports = function (Topics) {
 		parentPosts.forEach((post, i) => {
 			if (usersMap[post.uid]) {
 				parents[parentPids[i]] = {
-					username: usersMap[post.uid].username,
+					username: usersMap[post.uid].anonymous ? 'Anonymous' : usersMap[post.uid].username,
 					displayname: usersMap[post.uid].displayname,
 				};
 			}
