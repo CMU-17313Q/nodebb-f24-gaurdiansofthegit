@@ -199,7 +199,7 @@ module.exports = function (Topics) {
 		parentPosts.forEach((post, i) => {
 			if (usersMap[post.uid]) {
 				parents[parentPids[i]] = {
-					username: usersMap[post.uid].anonymous ? 'Anonymous' : usersMap[post.uid].username,
+					username: usersMap[post.uid].username,
 					displayname: usersMap[post.uid].displayname,
 				};
 			}
