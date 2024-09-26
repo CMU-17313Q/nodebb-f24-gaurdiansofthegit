@@ -140,17 +140,21 @@ module.exports = function (Topics) {
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 				// Username override for anonymous posts
 				// given by copilot, working partially
-				console.log('is it anonymous post', postObj.anonymous);
+				console.log('is it anonymous post', postObj);
 
 				if (postObj.anonymous !== false) {
 					console.log('only anony');
-					postObj.user.username = 'Anonymous'; // or set to an empty string if preferred
+					// postObj.user.userslug = 'Anonymous'; // or set to an empty string if preferred
+					// postObj.user.displayname = 'Anonymous';
+					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
+
+					//postObj.user.username = 'Anonymous';
 				} else if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
 					// Username override for guests, if enabled
 					postObj.user.username = validator.escape(String(postObj.handle));
 					postObj.user.displayname = postObj.user.username;
-				}
+				} 
 			}
 		});
 
@@ -158,6 +162,7 @@ module.exports = function (Topics) {
 			posts: postData,
 			uid: uid,
 		});
+		console.log("post info", result.posts);
 		return result.posts;
 	};
 
