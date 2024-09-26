@@ -149,12 +149,12 @@ module.exports = function (Topics) {
 					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
 
-					//postObj.user.username = 'Anonymous';
+					// postObj.user.username = 'Anonymous';
 				} else if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
 					// Username override for guests, if enabled
 					postObj.user.username = validator.escape(String(postObj.handle));
 					postObj.user.displayname = postObj.user.username;
-				} 
+				}
 			}
 		});
 
@@ -162,7 +162,7 @@ module.exports = function (Topics) {
 			posts: postData,
 			uid: uid,
 		});
-		console.log("post info", result.posts);
+		console.log('post info', result.posts);
 		return result.posts;
 	};
 
