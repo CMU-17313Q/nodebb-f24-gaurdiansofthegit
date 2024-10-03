@@ -38,7 +38,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: isAnonymous === true, // Set anonymous flag
+			anonymous: data.isAnonymous, // Set anonymous flag
 		};
 		console.log('Post Data:', postData); // Log the postData object
 		if (data.toPid) {
