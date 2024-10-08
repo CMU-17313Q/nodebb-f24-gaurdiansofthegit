@@ -140,7 +140,7 @@ Topics.getTopicsByTids = async function (tids, options) {
 				topic.user.displayname = topic.user.username;
 				topic.user.userslug = 'anonymous';
 				topic.user['icon:text'] = '?';
-				topic.user['icon:bgColor'] = '#000';
+				topic.user['icon:bgColor'] = '#D8BFD8';
 				topic.user['icon:color'] = '#fff';
 			}
 
