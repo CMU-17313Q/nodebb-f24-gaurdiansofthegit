@@ -44,7 +44,7 @@ module.exports = function (Topics) {
 
 		const [allPostData, callerSettings] = await Promise.all([
 			posts.getPostsFields(teaserPids, ['pid', 'uid', 'timestamp', 'tid', 'content']),
-			posts.getPostsFields(teaserPids, ['pid', 'uid', 'timestamp', 'tid', 'content','anonymous']),
+			posts.getPostsFields(teaserPids, ['pid', 'uid', 'timestamp', 'tid', 'content']),
 
 			user.getSettings(uid),
 		]);
@@ -70,13 +70,13 @@ module.exports = function (Topics) {
 			post.timestampISO = utils.toISOString(post.timestamp);
 			tidToPost[post.tid] = post;
 
-			if (post.anonymous === 'true') {
-				post.user = structuredClone(post.user);
-				post.user.username = 'Anonymous';
-				post.user.userslug = 'Anonymous';
-				post.user.uid = -1;
-				post.user.displayname = 'Anonymous';
-			}
+			// if (post.isAnonymous === 'true') {
+			// 	post.user = structuredClone(post.user);
+			// 	post.user.username = 'Anonymous';
+			// 	post.user.userslug = 'Anonymous';
+			// 	post.user.uid = -1;
+			// 	post.user.displayname = 'Anonymous';
+			// }
 		});
 		await Promise.all(postData.map(p => posts.parsePost(p)));
 
