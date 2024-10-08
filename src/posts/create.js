@@ -20,13 +20,13 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
-		const isAnonymous = data.isAnonymous || false;
-		console.log('isanonymous', data.isAnonymous);
+		//const isAnonymous = data.isAnonymous || false;
+		//console.log('isanonymous', data.isAnonymous);
 		
-		// Check if anonymous
-		if (isAnonymous) {
-			uid = 0; // Set uid to 0 for anonymous posts
-		}
+		// //Check if anonymous
+		// if (isAnonymous) {
+		// 	uid = -1; // Set uid to -1 for anonymous posts
+		// }
 		if (!uid && parseInt(uid, 10) !== 0) {
 			throw new Error('[[error:invalid-uid]]');
 		}
@@ -38,13 +38,13 @@ module.exports = function (Posts) {
 		const pid = await db.incrObjectField('global', 'nextPid');
 		let postData = {
 			pid: pid,
-			uid: isAnonymous ? 0 : data.uid, // Set uid to 0 for anonymous posts
+			uid: data.uid, // Set uid to -1 for anonymous posts
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			anonymous: isAnonymous, // Set anonymous flag
+			//anonymous: isAnonymous, // Set anonymous flag
 		};
-		console.log('Post Data:', postData); // Log the postData object
+		//console.log('Post Data:', postData); // Log the postData object
 		if (data.toPid) {
 			postData.toPid = data.toPid;
 		}
