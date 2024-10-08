@@ -117,6 +117,10 @@ module.exports = function (Topics) {
 			await user.isReadyToPost(uid, data.cid);
 		}
 
+		if (data.isAnonymous) {
+			data.uid = 0;
+		}
+
 		const tid = await Topics.create(data);
 
 		let postData = data;
@@ -191,6 +195,10 @@ module.exports = function (Topics) {
 		// For replies to scheduled topics, don't have a timestamp older than topic's itself
 		if (topicData.scheduled) {
 			data.timestamp = topicData.lastposttime + 1;
+		}
+
+		if (data.isAnonymous) {
+			data.uid = 0;
 		}
 
 		data.ip = data.req ? data.req.ip : null;
