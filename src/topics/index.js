@@ -135,6 +135,7 @@ Topics.getTopicsByTids = async function (tids, options) {
 				topic.user.displayname = topic.user.username;
 			}
 			if (topic.uid == 0){
+				topic.user = topic.uid ? result.usersMap[topic.uid] : { ...result.usersMap[topic.uid] };
 				topic.user.username = 'Anonymous';
 				topic.user.displayname = postObj.user.username;
 				topic.user.userslug = "anonymous";
