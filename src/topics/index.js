@@ -134,12 +134,21 @@ Topics.getTopicsByTids = async function (tids, options) {
 				topic.user.username = validator.escape(result.tidToGuestHandle[topic.tid]);
 				topic.user.displayname = topic.user.username;
 			}
+			if (topic.uid == 0){
+				topic.user.username = 'Anonymous';
+				topic.user.displayname = postObj.user.username;
+				topic.user.userslug = "anonymous";
+				topic.user['icon:text'] = '?';
+				topic.user['icon:bgColor'] = '#000';
+				topic.user['icon:color'] = '#fff';
+			}
+
 			topic.teaser = result.teasers[i] || null;
 			topic.isOwner = topic.uid === parseInt(uid, 10);
 			topic.ignored = followData[i].ignoring;
 			topic.followed = followData[i].following;
 			topic.unread = parseInt(uid, 10) <= 0 || (!hasRead[i] && !topic.ignored);
-			topic.bookmark = bookmarks[i] && (sortNewToOld ?
+			topic.bookmark = bookmarks[i] && (sortNewToOld ? 
 				Math.max(1, topic.postcount + 2 - bookmarks[i]) :
 				Math.min(topic.postcount, bookmarks[i] + 1));
 			topic.unreplied = !topic.teaser;
