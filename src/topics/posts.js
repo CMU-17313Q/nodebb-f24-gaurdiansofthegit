@@ -143,12 +143,11 @@ module.exports = function (Topics) {
 				// console.log('is it anonymous post', postObj);
 
 				if (postObj.uid === 0) {
-					// console.log('only anony');
 					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
 					postObj.user.userslug = 'anonymous';
 					postObj.user['icon:text'] = '?';
-					postObj.user['icon:bgColor'] = '#000';
+					postObj.user['icon:bgColor'] = '#D8BFD8';
 					postObj.user['icon:color'] = '#fff';
 				} if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
 					// Username override for guests, if enabled
