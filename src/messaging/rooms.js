@@ -86,7 +86,7 @@ module.exports = function (Messaging) {
 		}
 		// print statements
 
-		console.log('Safa');
+		//console.log('Safa');
 
 		// End of Copilot generated code
 
