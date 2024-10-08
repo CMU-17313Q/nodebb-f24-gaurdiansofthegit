@@ -45,7 +45,7 @@ module.exports = function (Messaging) {
 
 	// print statements
 
-	console.log('Safa');
+	//console.log('Safa');
 
 	function modifyRoomData(rooms, fields) {
 		rooms.forEach((data) => {
