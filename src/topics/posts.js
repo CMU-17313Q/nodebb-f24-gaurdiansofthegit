@@ -145,7 +145,7 @@ module.exports = function (Topics) {
 					// Username override for guests, if enabled
 					postObj.user.username = validator.escape(String(postObj.handle));
 					postObj.user.displayname = postObj.user.username;
-				} if (postObj.uid === -1) {
+				} if (postObj.uid === 0) {
 					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
 					postObj.user.userslug = 'anonymous';
