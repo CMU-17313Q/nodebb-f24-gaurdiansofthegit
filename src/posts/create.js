@@ -21,7 +21,7 @@ module.exports = function (Posts) {
 		const isMain = data.isMain || false;
 		// added a variable to track whether post is anon
 		const isAnonymous = data.isAnonymous || false;
-		//const isPrivate = data.isPrivate || false;
+		const isPrivate = data.isPrivate || false;
 		// added a variable to track the type of post
 
 		if (!uid && parseInt(uid, 10) !== 0) {
@@ -39,7 +39,7 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
-			//isPrivate: isPrivate,
+			isPrivate: isPrivate,
 		};
 
 		if (data.toPid) {
