@@ -152,8 +152,7 @@ module.exports = function (Topics) {
 					postObj.user['icon:text'] = '?';
 					postObj.user['icon:bgColor'] = '#D8BFD8';
 					postObj.user['icon:color'] = '#fff';
-				}  
-				
+				}
 			}
 		});
 
