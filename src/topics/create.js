@@ -118,7 +118,7 @@ module.exports = function (Topics) {
 		}
 
 		if (data.isAnonymous) {
-			data.uid = 0;
+			data.uid = -1;
 		}
 
 		const tid = await Topics.create(data);
@@ -198,7 +198,7 @@ module.exports = function (Topics) {
 		}
 
 		if (data.isAnonymous) {
-			data.uid = 0;
+			data.uid = -1;
 		}
 
 		data.ip = data.req ? data.req.ip : null;
