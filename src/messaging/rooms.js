@@ -41,39 +41,49 @@ module.exports = function (Messaging) {
 		modifyRoomData(roomData, fields);
 		return roomData;
 	};
+<<<<<<< HEAD
 	// Copilot generated code
 
 	// print statements
 
 	// console.log('Safa');
+=======
+>>>>>>> f24
 
 	function modifyRoomData(rooms, fields) {
 		rooms.forEach((data) => {
-			if (data) {
-				db.parseIntFields(data, intFields, fields);
-				data.roomName = validator.escape(String(data.roomName || ''));
-				data.public = parseInt(data.public, 10) === 1;
-				data.groupChat = data.userCount > 2;
+			if (!data) return;
 
-				if (!fields.length || fields.includes('notificationSetting')) {
-					data.notificationSetting = data.notificationSetting ||
-						(
-							data.public ?
-								Messaging.notificationSettings.ATMENTION :
-								Messaging.notificationSettings.ALLMESSAGES
-						);
-				}
+			db.parseIntFields(data, intFields, fields);
+			data.roomName = validator.escape(String(data.roomName || ''));
+			data.public = parseInt(data.public, 10) === 1;
+			data.groupChat = data.userCount > 2;
 
-				if (data.hasOwnProperty('groups') || !fields.length || fields.includes('groups')) {
-					try {
-						data.groups = JSON.parse(data.groups || '[]');
-					} catch (err) {
-						winston.error(err.stack);
-						data.groups = [];
-					}
+			if (shouldUpdateNotificationSetting(fields)) {
+				data.notificationSetting = data.notificationSetting ||
+					(data.public ?
+						Messaging.notificationSettings.ATMENTION :
+						Messaging.notificationSettings.ALLMESSAGES
+					);
+			}
+
+			if (shouldUpdateGroups(data, fields)) {
+				try {
+					data.groups = JSON.parse(data.groups || '[]');
+				} catch (err) {
+					winston.error(err.stack);
+					data.groups = [];
 				}
 			}
 		});
+	}
+
+	function shouldUpdateNotificationSetting(fields) {
+		return !fields.length || fields.includes('notificationSetting');
+	}
+
+	function shouldUpdateGroups(data, fields) {
+		return data.hasOwnProperty('groups') || !fields.length || fields.includes('groups');
 	}
 
 	Messaging.newRoom = async (uid, data) => {
@@ -84,12 +94,15 @@ module.exports = function (Messaging) {
 		if (data.hasOwnProperty('roomName')) {
 			checkRoomName(data.roomName);
 		}
+<<<<<<< HEAD
 		// print statements
 
 		// console.log('Safa');
 
 		// End of Copilot generated code
 
+=======
+>>>>>>> f24
 
 		const now = Date.now();
 		const roomId = await db.incrObjectField('global', 'nextChatRoomId');

@@ -389,7 +389,10 @@ Flags.deleteNote = async function (flagId, datetime) {
 };
 
 Flags.create = async function (type, id, uid, reason, timestamp, forceFlag = false) {
+<<<<<<< HEAD
 	// console.log('Flags.created RAYYAN');
+=======
+>>>>>>> f24
 	let doHistoryAppend = false;
 	if (!timestamp) {
 		timestamp = Date.now();

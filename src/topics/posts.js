@@ -2,13 +2,13 @@
 'use strict';
 
 const _ = require('lodash');
-const validator = require('validator');
+// const validator = require('validator');
 const nconf = require('nconf');
 
 const db = require('../database');
 const user = require('../user');
 const posts = require('../posts');
-const meta = require('../meta');
+// const meta = require('../meta');
 const plugins = require('../plugins');
 const utils = require('../utils');
 
