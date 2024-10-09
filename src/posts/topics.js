@@ -4,23 +4,12 @@
 const topics = require('../topics');
 const user = require('../user');
 const utils = require('../utils');
-const groups = require('../groups');
+//const groups = require('../groups');
 
 module.exports = function (Posts) {
 	Posts.getPostsFromSet = async function (set, start, stop, uid, reverse) {
 		const pids = await Posts.getPidsFromSet(set, start, stop, reverse);
 		const posts = await Posts.getPostsByPids(pids, uid);
-		// Filter out private posts if the user is not an admin or moderator
-		posts = await Promise.all(posts.map(async (post) => {
-			if (post.isPrivate) {
-				const isAdmin = await user.isAdministrator(uid);
-				const isModerator = await groups.isMember(uid, 'moderators');
-				if (!isAdmin && !isModerator) {
-					return null;
-				}
-			}
-			return post;
-		}));
 		return await user.blocks.filter(uid, posts);
 	};        
 
@@ -46,23 +35,10 @@ module.exports = function (Posts) {
     Posts.generatePostPaths = async function (pids, uid) {
         const postData = await Posts.getPostsFields(pids, ['pid', 'tid']);
         const tids = postData.map(post => post && post.tid);
-        const [indices, topicData] = await Promise.all([
-            Posts.getPostIndices(postData, uid),
-            topics.getTopicsFields(tids, ['slug', 'isPrivate']), // Include isPrivate field
-        ]);
 
         const paths = await Promise.all(pids.map(async (pid, index) => {
             const slug = topicData[index] ? topicData[index].slug : null;
             const postIndex = utils.isNumber(indices[index]) ? parseInt(indices[index], 10) + 1 : null;
-
-            // Check if the topic is private
-            if (topicData[index] && topicData[index].isPrivate) {
-                const isAdmin = await user.isAdministrator(uid);
-                const isModerator = await groups.isMember(uid, 'moderators');
-                if (!isAdmin && !isModerator) {
-                    throw new Error('You do not have permission to view this topic.');
-                }
-            }
 
             if (slug && postIndex) {
                 const index = postIndex === 1 ? '' : `/${postIndex}`;

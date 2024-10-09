@@ -140,10 +140,14 @@ module.exports = function (Topics) {
 				postObj.replies = replies[i];
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 
-				if (postObj.anonymous !== false) {
+				if (postObj.uid == 0) {
 					// postObj.user.userslug = 'Anonymous'; // or set to an empty string if preferred
 					// postObj.user.displayname = 'Anonymous';
 					postObj.user.username = 'Anonymous';
+					postObj.user.displayname = postObj.user.username;
+				}
+				else if (postObj.isPrivate) {
+					postObj.user.username = 'Private User';
 					postObj.user.displayname = postObj.user.username;
 				}
 			}
