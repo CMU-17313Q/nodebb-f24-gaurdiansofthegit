@@ -188,7 +188,7 @@ describe('Topic\'s', () => {
 
 			assert.strictEqual(result.body.status.code, 'ok');
 			assert.strictEqual(result.body.response.title, 'just a title');
-			assert.strictEqual(result.body.response.user.username, '[[global:guest]]');
+			assert.strictEqual(result.body.response.user.username, 'Anonymous');
 
 			const replyResult = await helpers.request('post', `/api/v3/topics/${result.body.response.tid}`, {
 				body: {
@@ -221,8 +221,8 @@ describe('Topic\'s', () => {
 
 			assert.strictEqual(result.body.status.code, 'ok');
 			assert.strictEqual(result.body.response.title, 'just a title');
-			assert.strictEqual(result.body.response.user.username, 'guest123');
-			assert.strictEqual(result.body.response.user.displayname, 'guest123');
+			assert.strictEqual(result.body.response.user.username, 'Anonymous');
+			assert.strictEqual(result.body.response.user.displayname, 'Anonymous');
 
 			const replyResult = await helpers.request('post', `/api/v3/topics/${result.body.response.tid}`, {
 				body: {
