@@ -147,8 +147,10 @@ module.exports = function (Topics) {
 					postObj.user.displayname = postObj.user.username;
 				}
 				else if (postObj.isPrivate) {
-					postObj.user.username = 'Private User';
-					postObj.user.displayname = postObj.user.username;
+					if (!user.isAdminOrGlobalMod(uid)) {
+						postObj.user.username = 'Private User';
+						postObj.user.displayname = postObj.user.username;
+					}
 				}
 			}
 		});
