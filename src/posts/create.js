@@ -31,11 +31,14 @@ module.exports = function (Posts) {
 			await checkToPid(data.toPid, uid);
 		}
 
+		// Copilot assisted code
 		// Load bad words list
 		const badWords = loadBadWords();
 		// Check content against bad words
+		console.log('Checking content:', content); // Log the content being checked
 		const foundBadWord = badWords.find(regex => regex.test(content));
 		if (foundBadWord) {
+			console.log('Detected bad word:', foundBadWord); // Log the bad word detected
 			throw new Error(`[[error:bad-word-detected]]`);
 		}
 
@@ -82,6 +85,7 @@ module.exports = function (Posts) {
 		return result.post;
 	};
 
+	// Copilot assisted code
 	// Function to load bad words from the public folder
 	function loadBadWords() {
 		console.log('Loading bad words'); // Debugging statement
