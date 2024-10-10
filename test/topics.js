@@ -83,7 +83,7 @@ describe('Topic\'s', () => {
 			topics.post({
 				uid: topic.userId,
 				title: topic.title,
-				content: "helooooo my name is arab",
+				content: 'helooooo my name is arab',
 				cid: topic.categoryId,
 			}, (err, result) => {
 				assert(err, 'Expected an error to be thrown');
@@ -94,14 +94,14 @@ describe('Topic\'s', () => {
 		});
 
 
-		
+
 		// TEST CASE FOR BAD WORDS, Hello is not a bad word but the hell in Hello should not trigger any exception
 		it('should create a new topic with inappropriate word in a normal word', (done) => {
-			console.log("#############################################################################################33")
+			console.log('#############################################################################################33');
 			topics.post({
 				uid: topic.userId,
 				title: topic.title,
-				content: "hello should not flag anything even though the first 4 letters can be a bad word",
+				content: 'hello should not flag anything even though the first 4 letters can be a bad word',
 				cid: topic.categoryId,
 			}, (err, result) => {
 				assert.ifError(err);
