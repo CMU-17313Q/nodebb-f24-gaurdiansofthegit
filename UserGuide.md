@@ -176,7 +176,7 @@ Due to ongoing integration and merging issues, the team was unable to implement 
 
 ### Conclusion ###
 
-The Anonymous Post feature is a crucial addition for educational platforms, fostering a safe environment for students to discuss sensitive topics without fear of exposure. This functionality, backed by clear usage guidelines, ensures the feature is reliable and ready for deployment. For further details or customization, refer to the source code in `src/topics/posts.js` or ‘src/topics/create.js’ under the branch ‘backend_anonymous_fhaddad’ \
+***The Anonymous Post feature is a crucial addition for educational platforms, fostering a safe environment for students to discuss sensitive topics without fear of exposure. This functionality, backed by clear usage guidelines, ensures the feature is reliable and ready for deployment. For further details or customization, refer to the source code in `src/topics/posts.js` or ‘src/topics/create.js’ under the branch ‘backend_anonymous_fhaddad’ ***
 ---
 
 # Feature 4: Dynamically Change the Navigation Header Based on URL
