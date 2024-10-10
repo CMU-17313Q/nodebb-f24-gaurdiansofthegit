@@ -205,7 +205,7 @@ describe('Categories', () => {
 					siteTitle: 'NodeBB',
 					relative_path: '',  // Set this to ensure URLs are correct
 				},
-				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+				currentUrl: '/category/1/announcements', // Simulate that we're on a different URL
 			};
 
 			const renderedHtml = renderTemplate(brandTemplateContent, data);
