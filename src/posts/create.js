@@ -23,13 +23,13 @@ module.exports = function (Posts) {
 		const isMain = data.isMain || false;
 		const isAnonymous = data.isAnonymous || false;
 
-        if (!uid && parseInt(uid, 10) !== 0) {
-            throw new Error('[[error:invalid-uid]]');
-        }
+		if (!uid && parseInt(uid, 10) !== 0) {
+			throw new Error('[[error:invalid-uid]]');
+		}
 
-        if (data.toPid) {
-            await checkToPid(data.toPid, uid);
-        }
+		if (data.toPid) {
+			await checkToPid(data.toPid, uid);
+		}
 
 		const pid = await db.incrObjectField('global', 'nextPid');
 		let postData = {
@@ -40,65 +40,65 @@ module.exports = function (Posts) {
 			timestamp: timestamp,
 		};
 
-        if (data.toPid) {
-            postData.toPid = data.toPid;
-        }
-        if (data.ip && meta.config.trackIpPerPost) {
-            postData.ip = data.ip;
-        }
-        if (data.handle && !parseInt(uid, 10)) {
-            postData.handle = data.handle;
-        }
+		if (data.toPid) {
+			postData.toPid = data.toPid;
+		}
+		if (data.ip && meta.config.trackIpPerPost) {
+			postData.ip = data.ip;
+		}
+		if (data.handle && !parseInt(uid, 10)) {
+			postData.handle = data.handle;
+		}
 
-        let result = await plugins.hooks.fire('filter:post.create', { post: postData, data: data });
-        postData = result.post;
-        await db.setObject(`post:${postData.pid}`, postData);
+		let result = await plugins.hooks.fire('filter:post.create', { post: postData, data: data });
+		postData = result.post;
+		await db.setObject(`post:${postData.pid}`, postData);
 
-        const topicData = await topics.getTopicFields(tid, ['cid', 'pinned']);
-        postData.cid = topicData.cid;
+		const topicData = await topics.getTopicFields(tid, ['cid', 'pinned']);
+		postData.cid = topicData.cid;
 
-        await Promise.all([
-            db.sortedSetAdd('posts:pid', timestamp, postData.pid),
-            db.incrObjectField('global', 'postCount'),
-            user.onNewPostMade(postData),
-            topics.onNewPostMade(postData),
-            categories.onNewPostMade(topicData.cid, topicData.pinned, postData),
-            groups.onNewPostMade(postData),
-            addReplyTo(postData, timestamp),
-            Posts.uploads.sync(postData.pid),
-        ]);
+		await Promise.all([
+			db.sortedSetAdd('posts:pid', timestamp, postData.pid),
+			db.incrObjectField('global', 'postCount'),
+			user.onNewPostMade(postData),
+			topics.onNewPostMade(postData),
+			categories.onNewPostMade(topicData.cid, topicData.pinned, postData),
+			groups.onNewPostMade(postData),
+			addReplyTo(postData, timestamp),
+			Posts.uploads.sync(postData.pid),
+		]);
 
-        result = await plugins.hooks.fire('filter:post.get', { post: postData, uid: data.uid });
-        result.post.isMain = isMain;
-        plugins.hooks.fire('action:post.save', { post: _.clone(result.post) });
-        return result.post;
-    };
+		result = await plugins.hooks.fire('filter:post.get', { post: postData, uid: data.uid });
+		result.post.isMain = isMain;
+		plugins.hooks.fire('action:post.save', { post: _.clone(result.post) });
+		return result.post;
+	};
 
-    // copilot assisted code: Function to load bad words from the public folder
-    function loadBadWords() {
-        const badWordsFilePath = path.join(__dirname, '../public/bad-words.txt');
-        const badWords = fs.readFileSync(badWordsFilePath, 'utf8').split('\n').map(word => word.trim());
-        return badWords;
-    }
+	// copilot assisted code: Function to load bad words from the public folder
+	function loadBadWords() {
+		const badWordsFilePath = path.join(__dirname, '../public/bad-words.txt');
+		const badWords = fs.readFileSync(badWordsFilePath, 'utf8').split('\n').map(word => word.trim());
+		return badWords;
+	}
 
-    async function addReplyTo(postData, timestamp) {
-        if (!postData.toPid) {
-            return;
-        }
-        await Promise.all([
-            db.sortedSetAdd(`pid:${postData.toPid}:replies`, timestamp, postData.pid),
-            db.incrObjectField(`post:${postData.toPid}`, 'replies'),
-        ]);
-    }
+	async function addReplyTo(postData, timestamp) {
+		if (!postData.toPid) {
+			return;
+		}
+		await Promise.all([
+			db.sortedSetAdd(`pid:${postData.toPid}:replies`, timestamp, postData.pid),
+			db.incrObjectField(`post:${postData.toPid}`, 'replies'),
+		]);
+	}
 
-    async function checkToPid(toPid, uid) {
-        const [toPost, canViewToPid] = await Promise.all([
-            Posts.getPostFields(toPid, ['pid', 'deleted']),
-            privileges.posts.can('posts:view_deleted', toPid, uid),
-        ]);
-        const toPidExists = !!toPost.pid;
-        if (!toPidExists || (toPost.deleted && !canViewToPid)) {
-            throw new Error('[[error:invalid-pid]]');
-        }
-    }
+	async function checkToPid(toPid, uid) {
+		const [toPost, canViewToPid] = await Promise.all([
+			Posts.getPostFields(toPid, ['pid', 'deleted']),
+			privileges.posts.can('posts:view_deleted', toPid, uid),
+		]);
+		const toPidExists = !!toPost.pid;
+		if (!toPidExists || (toPost.deleted && !canViewToPid)) {
+			throw new Error('[[error:invalid-pid]]');
+		}
+	}
 };
