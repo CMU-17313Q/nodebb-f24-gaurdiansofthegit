@@ -71,4 +71,5 @@ These tests ensure that the feature works as intended under various conditions. 
 
 ## Conclusion
 The **Private Post** feature provides an additional layer of control over post visibility within the NodeBB environment. Through the automated tests and usage guidelines, this feature is robust and ready for use in production. For further questions, refer to the source code under `src/posts.js` or the test suite under `test/privateposts.js`.
+
 ---
