@@ -93,6 +93,7 @@ describe('Topic\'s', () => {
 			});
 		});
 
+		
 
 
 		// TEST CASE FOR BAD WORDS, Hello is not a bad word but the hell in Hello should not trigger any exception
@@ -111,6 +112,29 @@ describe('Topic\'s', () => {
 			});
 		});
 
+		// TEST CASE FOR BAD WORDS, "Arab" is a bad word
+		// COPILOT ASSISTED CODE
+		it('should not create a new topic with inappropriate words "Arab"', (done) => {
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: 'helooooo my name is Arab',
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert(err, 'Expected an error to be thrown');
+				assert.strictEqual(err.message, '[[error:bad-word-detected, Arab]]', 'Expected bad word detection error');
+				assert(!result, 'Expected no result due to bad word detection');
+				done();
+			});
+		});
+
+
+
+
+
+
+
+		
 		it('should get post count', async () => {
 			const count = await socketTopics.postcount({ uid: adminUid }, topic.tid);
 			assert.strictEqual(count, 1);
