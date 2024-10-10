@@ -76,7 +76,7 @@ describe('Topic\'s', () => {
 				done();
 			});
 		});
-		
+
 		it('should get post count', async () => {
 			const count = await socketTopics.postcount({ uid: adminUid }, topic.tid);
 			assert.strictEqual(count, 1);
