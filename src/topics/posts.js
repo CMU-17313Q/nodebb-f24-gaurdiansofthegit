@@ -55,8 +55,8 @@ module.exports = function (Topics) {
 			replies = postData.slice(1);
 		}
 		// Filter private posts based on user privileges
-		const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
-		postData = postData.filter(post => !post.isPrivate || isAdminOrMod);
+		// const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
+		// postData = postData.filter(post => !(post.isPrivate && !isAdminOrMod));
 
 
 		Topics.calculatePostIndices(replies, repliesStart);
