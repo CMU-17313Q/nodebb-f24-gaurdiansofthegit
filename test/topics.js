@@ -128,6 +128,21 @@ describe('Topic\'s', () => {
 			});
 		});
 
+		// TEST CASE FOR BAD WORDS, "ARAB" is a bad word
+		// COPILOT ASSISTED CODE
+		it('should not create a new topic with inappropriate words "ARAB"', (done) => {
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: 'helooooo my name is ARAB',
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert(err, 'Expected an error to be thrown');
+				assert.strictEqual(err.message, '[[error:bad-word-detected, ARAB]]', 'Expected bad word detection error');
+				assert(!result, 'Expected no result due to bad word detection');
+				done();
+			});
+		});
 
 
 
