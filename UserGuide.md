@@ -2,7 +2,7 @@
 ## Guardians of the Git: Project 2C
 
 ---
-## Feature 1: As a user, I want to post privately under a topic so that I can discuss confidential information.
+# Feature 1: As a user, I want to post privately under a topic so that I can discuss confidential information.
 
 The **Private Post** feature allows users to create posts that are only visible to authorized users. The `isPrivate` flag is used to determine whether a post is private or public. By default, posts are public unless the `isPrivate` flag is explicitly set to `true`. This guide explains how to create, test, and use the feature in your NodeBB environment.
 
@@ -70,18 +70,12 @@ These tests ensure that the feature works as intended under various conditions. 
 - **Visibility Filtering**: Future development should ensure that private posts are only visible to authorized users by modifying post-fetching functions to respect the `isPrivate` flag.
 
 ## Conclusion
-The **Private Post** feature provides an additional layer of control over post visibility within the NodeBB environment. Through the automated tests and usage guidelines, this feature is robust and ready for use in production. For further questions, refer to the source code under `src/posts.js` or the test suite under `test/privateposts.js`.
+The **Private Post** feature provides an additional layer of control over post visibility within the NodeBB environment. Through the automated tests and usage guidelines, this feature is robust and ready for use in production. For further questions, refer to the source code under `src/posts.js` or the test suite under `test/privateposts.js`.\
 
 ---
 
-
-
-
-
-
-
-
-## Feature 2: Filtering Bad Words in Posts
+# Feature 2: Filtering Bad Words in Posts,
+## As an admin I want to make sure that users cannot use offensive and inappropriate content on their posts, so I can create a safe enviorment on Nodebb.
 
 The **Bad Word Filter** feature helps maintain a clean and respectful environment by preventing users from posting content containing inappropriate words. This feature uses a predefined list of bad words taken from the CMU school of computer science website, to automatically detect and filter out inappropriate content in both post titles and content.
 
