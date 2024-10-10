@@ -2,7 +2,7 @@
 ## Guardians of the Git: Project 2C
 
 ---
-### Feature 1: As a user, I want to post privately under a topic so that I can discuss confidential information.
+## Feature 1: As a user, I want to post privately under a topic so that I can discuss confidential information.
 
 The **Private Post** feature allows users to create posts that are only visible to authorized users. The `isPrivate` flag is used to determine whether a post is private or public. By default, posts are public unless the `isPrivate` flag is explicitly set to `true`. This guide explains how to create, test, and use the feature in your NodeBB environment.
 
@@ -73,3 +73,61 @@ These tests ensure that the feature works as intended under various conditions. 
 The **Private Post** feature provides an additional layer of control over post visibility within the NodeBB environment. Through the automated tests and usage guidelines, this feature is robust and ready for use in production. For further questions, refer to the source code under `src/posts.js` or the test suite under `test/privateposts.js`.
 
 ---
+
+
+
+
+
+
+
+
+## Feature 2: Filtering Bad Words in Posts
+
+The **Bad Word Filter** feature helps maintain a clean and respectful environment by preventing users from posting content containing inappropriate words. This feature uses a predefined list of bad words taken from the CMU school of computer science website, to automatically detect and filter out inappropriate content in both post titles and content.
+
+### How to Use the Bad Word Filter
+Whenever a user attempts to create a new post or topic, the content of the post is scanned against a list of bad words. If the content includes any of these words (case insensitive), the post will be rejected with an error message indicating which word/s caused the rejection.
+
+For example, if a post contains a word like "badword", the user will see a message such as:
+`Error: Bad word detected, badword`.
+
+### Steps for Creating a Valid Post
+
+- Ensure that the content you are submitting does not contain any offensive or inappropriate words.
+- If the system detects a bad word, you will need to modify your post to remove or replace the word/s shown in the error message.
+
+### Automated Tests
+
+#### Test Suite Location
+All automated tests for the Bad Word Filter feature can be found under:
+`test/topics.js`
+
+#### Running the Test Suite
+You can run the test suite for the Bad Word Filter using npm with the following command:
+npm run test test/topics.js
+
+
+### What Is Being Tested
+
+1. **Creating a Post with a Bad Word**  
+   Ensures that when a post contains a bad word, it is correctly caught and rejected.
+   
+2. **Creating a Post without a Bad Word**  
+   Verifies that a post without any bad words is successfully created, and no error message is thrown.
+
+3. **Edge Cases**  
+   Tests scenarios such as partial matches (e.g., "hello" should not trigger an error, even though it contains the letters "hell"), as well as case insensitive scenarios like “Arab”, or “ARAB”, which are considered bad words since “arab” is in the bad words text file.
+
+### Why the Tests Are Sufficient
+These tests cover the core functionality of the Bad Word Filter, ensuring that posts with inappropriate content are blocked while valid posts are allowed. They also include edge cases where valid words might partially match inappropriate words, ensuring that the filter is not overly restrictive.
+
+## Development Considerations
+### Code Structure
+
+- **posts.create()**: The filter logic is applied when a new post is created. The content is checked for bad words, and if any are found, the post is rejected.
+- **Filter Function**: A function reads the bad words from a text file, which is loaded into an array, alphabetized, and used for comparison against the post content.
+
+---
+## Conclusion
+
+This explains how to use and test the bad word filtering feature, along with automated tests to ensure the feature works as expected. For further information, the CA can refer to the source code in `src/posts/create.js` and the test suite in `test/topics.js`.
