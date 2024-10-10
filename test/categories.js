@@ -87,7 +87,7 @@ describe('Categories', () => {
 			const renderedHtml = renderTemplate(brandTemplateContent, data);
 			console.log(renderedHtml); // Debugging step: Print rendered HTML
 		
-			assert(renderedHtml.includes('logo.png'), 'Logo is not rendered.');
+			assert(renderedHtml.includes('logo.png'), 'Logo is rendered.');
 			// const expectedAltText = 'alt="Company Logo"';
 			// assert(renderedHtml.includes(expectedAltText), `Expected alt text not found. Rendered HTML: ${renderedHtml}`);
 			//assert(renderedHtml.includes('Test Site'), 'Site title is not rendered.');
@@ -107,8 +107,8 @@ describe('Categories', () => {
             assert(!renderedHtml.includes('logo.png'), 'Logo should not be rendered.');
         });
 
-        // Test: Render dynamic links based on the current URL
-        it('should render dynamic links based on the current URL', () => {
+        // Test: Render dynamic links if on the homepage
+        it('should render dynamic links if URL is on home-page', () => {
             const data = {
                 brand: {
                     logo: 'logo.png',
@@ -118,15 +118,16 @@ describe('Categories', () => {
                     siteTitle: 'Test Site',
 					relative_path: '',  // Set this to ensure URLs are correct
                 },
-				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+				currentUrl: '/', // Simulate that we're on a different URL
             };
 
             const renderedHtml = renderTemplate(brandTemplateContent, data);
 			// Check for the Announcements link explicitly
 			const expectedAnnouncementsUrl = '/category/1/announcements';
-			assert(renderedHtml.includes(expectedAnnouncementsUrl), `Expected Announcements link not found. Rendered HTML: ${renderedHtml}`);
-            //assert(!renderedHtml.includes('Announcements'), 'Announcements link should not be rendered.');
-            //assert(renderedHtml.includes('General Discussion'), 'General Discussion link should be rendered.');
+			assert(renderedHtml.includes(expectedAnnouncementsUrl), `Expected Announcements link found. Rendered HTML: ${renderedHtml}`);
+            assert(renderedHtml.includes('General Discussion'), 'General Discussion link should be rendered.');
+			assert(renderedHtml.includes('Blogs'), 'Blogs link should be rendered.');
+			assert(renderedHtml.includes('Comments & Feedback'), 'Comments & Feedback link should be rendered.');
         });
 
         // Test: No link rendering for the current category
