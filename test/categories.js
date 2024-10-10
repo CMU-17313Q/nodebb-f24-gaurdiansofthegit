@@ -130,8 +130,94 @@ describe('Categories', () => {
 			assert(renderedHtml.includes('Comments & Feedback'), 'Comments & Feedback link should be rendered.');
         });
 
+
+		// Ensure Announcements category is rendered correctly
+		it('should render the Announcements category link correctly', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: true,
+					siteTitle: 'My NodeBB Forum',
+					relative_path: '',  // Set this to ensure URLs are correct
+				},
+				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+			};
+
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+
+			// Check for the Announcements link explicitly
+			const expectedAnnouncementsUrl = '/category/1/announcements';
+			assert(renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
+		});
+
+		// Ensure General Discussion category is rendered correctly
+		it('should render the General Discussion category link correctly', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: true,
+					siteTitle: 'My NodeBB Forum',
+					relative_path: '',  // Set this to ensure URLs are correct
+				},
+				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+			};
+
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+
+			// Check for the General Discussion link explicitly
+			const expectedGeneralDiscussionUrl = '/category/2/general-discussion';
+			assert(renderedHtml.includes(expectedGeneralDiscussionUrl), 'General Discussion link should be rendered.');
+		});
+
+		// Ensure Comments & Feedback category is rendered correctly
+		it('should render the Comments & Feedback category link correctly', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: true,
+					siteTitle: 'My NodeBB Forum',
+					relative_path: '',  // Set this to ensure URLs are correct
+				},
+				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+			};
+
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+
+			// Check for the Comments & Feedback link explicitly
+			const expectedCommentsFeedbackUrl = '/category/4/comments-feedback';
+			assert(renderedHtml.includes(expectedCommentsFeedbackUrl), 'Comments & Feedback link should be rendered.');
+		});
+
+		// Ensure Blogs category is rendered correctly
+		it('should render the Blogs category link correctly', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: true,
+					siteTitle: 'My NodeBB Forum',
+					relative_path: '',  // Set this to ensure URLs are correct
+				},
+				currentUrl: '/some-other-url', // Simulate that we're on a different URL
+			};
+
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+
+			// Check for the Blogs link explicitly
+			const expectedBlogsUrl = '/category/3/blogs';
+			assert(renderedHtml.includes(expectedBlogsUrl), 'Blogs link should be rendered.');
+		});
+
+
         // Test: No link rendering for the current category
-        it('should not render dynamic links for the current category', () => {
+        it('should not render dynamic link of general discussioin on the general discussions page', () => {
 			const data = {
 				brand: {
 					logo: 'logo.png',
@@ -151,7 +237,7 @@ describe('Categories', () => {
 		
 			// Ensure other categories (like Announcements) are rendered correctly
 			const expectedAnnouncementsUrl = '/category/1/announcements';
-			assert(renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
+			assert(!renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
 		});
 
 		// Test: No site title rendering when disabled
