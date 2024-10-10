@@ -162,6 +162,54 @@ describe('Topic\'s', () => {
 		});
 
 
+		// TEST CASE FOR BAD WORDS, "Arabic" is not a bad word
+		it('should create a new topic with inappropriate word in a normal word "Arabic"', (done) => {
+			console.log('#############################################################################################33');
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: 'hello my name is Arabic',
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert.ifError(err);
+				assert(result);
+				topic.tid = result.topicData.tid;
+				done();
+			});
+		});
+
+
+		// TEST CASE FOR BAD WORDS, "ARABIC" is not a bad word
+		it('should create a new topic with inappropriate word in a normal word "ARABIC"', (done) => {
+			console.log('#############################################################################################33');
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: 'hello my name is ARABIC',
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert.ifError(err);
+				assert(result);
+				topic.tid = result.topicData.tid;
+				done();
+			});
+		});
+
+		// TEST CASE FOR BAD WORDS, "arabic" is not a bad word
+		it('should create a new topic with inappropriate word in a normal word "arabic"', (done) => {
+			console.log('#############################################################################################33');
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: 'hello my name is arabic',
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert.ifError(err);
+				assert(result);
+				topic.tid = result.topicData.tid;
+				done();
+			});
+		});
 
 		
 		it('should get post count', async () => {
