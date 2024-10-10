@@ -2,7 +2,7 @@
 ## Guardians of the Git: Project 2C
 
 ---
-# Feature 1: Posting Notes
+# Feature 1: Posting Private Posts
 ## As a user, I want to post privately under a topic so that I can discuss confidential information.
 
 The **Private Post** feature allows users to create posts that are only visible to authorized users. The `isPrivate` flag is used to determine whether a post is private or public. By default, posts are public unless the `isPrivate` flag is explicitly set to `true`. This guide explains how to create, test, and use the feature in your NodeBB environment.
