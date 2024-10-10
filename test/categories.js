@@ -281,7 +281,6 @@ describe('Categories', () => {
 
 			assert(!renderedHtml.includes('NodeBB'), 'Site title should be rendered.');
 		});
-
 		
     });
 
