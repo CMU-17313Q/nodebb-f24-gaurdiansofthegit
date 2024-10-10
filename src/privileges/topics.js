@@ -13,6 +13,22 @@ const privsCategories = require('./categories');
 
 const privsTopics = module.exports;
 
+privsTopics.privatePostFiltering = (topicData, readerUid, isAdminOrMod) => {
+    // Private posts are hidden from other users
+    if (topicData.postType !== 'private') {
+        return true;
+    }
+    // Post owner can see their own private posts
+    if (topicData.uid === readerUid) {
+        return true;
+    }
+    // Admins and Mods can see private posts
+    if (isAdminOrMod) {
+        return true;
+    }
+    return false;
+};
+
 privsTopics.get = async function (tid, uid) {
 	uid = parseInt(uid, 10);
 
