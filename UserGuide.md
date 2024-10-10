@@ -2,7 +2,8 @@
 ## Guardians of the Git: Project 2C
 
 ---
-# Feature 1: As a user, I want to post privately under a topic so that I can discuss confidential information.
+# Feature 1: Posting Notes
+## As a user, I want to post privately under a topic so that I can discuss confidential information.
 
 The **Private Post** feature allows users to create posts that are only visible to authorized users. The `isPrivate` flag is used to determine whether a post is private or public. By default, posts are public unless the `isPrivate` flag is explicitly set to `true`. This guide explains how to create, test, and use the feature in your NodeBB environment.
 
@@ -74,8 +75,8 @@ The **Private Post** feature provides an additional layer of control over post v
 
 ---
 
-# Feature 2: Filtering Bad Words in Posts
-## As an admin, I want to make sure that users cannot use offensive and inappropriate content on their posts, so I can create a safe enviorment on Nodebb.
+# Feature 2: Filtering Bad Words in Posts,
+## As an admin I want to make sure that users cannot use offensive and inappropriate content on their posts, so I can create a safe enviorment on Nodebb.
 
 The **Bad Word Filter** feature helps maintain a clean and respectful environment by preventing users from posting content containing inappropriate words. This feature uses a predefined list of bad words taken from the CMU school of computer science website, to automatically detect and filter out inappropriate content in both post titles and content.
 
@@ -127,7 +128,8 @@ These tests cover the core functionality of the Bad Word Filter, ensuring that p
 This explains how to use and test the bad word filtering feature, along with automated tests to ensure the feature works as expected. For further information, the CA can refer to the source code in `src/posts/create.js` and the test suite in `test/topics.js`.
 
 ---
-# Feature 3: As a student, I want to ask questions without showing my username to the viewers, so that I can discuss sensitive topics without other students knowing my identity. #
+# Feature 3: Anonymous Posts
+## As a user, I want to ask questions without showing my username to the viewers, so that I can discuss sensitive topics without other students knowing my identity. #
 
 The Anonymous Post feature enables students to create posts or questions that are visible to all without displaying the user's account and name, keeping their identity hidden from other students. This guide outlines how to use, implement, and test the feature within your educational platform.
 
@@ -174,4 +176,36 @@ Due to ongoing integration and merging issues, the team was unable to implement 
 
 ### Conclusion ###
 
-The Anonymous Post feature is a crucial addition for educational platforms, fostering a safe environment for students to discuss sensitive topics without fear of exposure. This functionality, backed by clear usage guidelines, ensures the feature is reliable and ready for deployment. For further details or customization, refer to the source code in `src/topics/posts.js` or ‘src/topics/create.js’ under the branch ‘backend_anonymous_fhaddad’ 
+The Anonymous Post feature is a crucial addition for educational platforms, fostering a safe environment for students to discuss sensitive topics without fear of exposure. This functionality, backed by clear usage guidelines, ensures the feature is reliable and ready for deployment. For further details or customization, refer to the source code in `src/topics/posts.js` or ‘src/topics/create.js’ under the branch ‘backend_anonymous_fhaddad’ \
+---
+
+# Feature 4: Dynamically Change the Navigation Header Based on URL
+
+## As a user, I want the navigation header to display relevant category shortcuts so that I can quickly navigate between key sections of the forum.
+
+### How to Use the Dynamic Navigation Header
+When users navigate through different sections of the forum, the navigation header dynamically updates to display category shortcuts such as **Announcements**, **General Discussion**, **Blogs**, and **Comments & Feedback**. This allows users to quickly access different categories from any page. 
+
+- To navigate between pages, simply click the appropriate button in the header.
+- To return to the categories page, click on the **NodeBB logo** in the top left.
+- On the home page (where all categories are listed), the dynamic navigation header will not display to avoid repetition.
+
+### Example
+If a user is on the **General Discussion** page, the header will display links to **Announcements**, **Blogs**, and **Comments & Feedback**, but **General Discussion** will not appear since the user is already on that page.
+
+### Automated Tests
+
+#### Test Suite Location
+All automated tests for the **Dynamic Navigation Header** feature can be found under:  
+`test/categories.js`
+
+The source code for this feature can be found in the following template file:  
+`node_modules/nodebb-theme-harmony/templates/partials/header/brand.tpl`
+
+#### What Is Being Tested
+- **Dynamic Link Rendering**: Ensures that the correct links are dynamically displayed based on the current page.
+- **Category-Specific Links**: Validates that the link to the current category is not displayed in the navigation header.
+- **Default Behavior**: Checks that the navigation header behaves as expected when no specific categories are selected (i.e., on the categories page).
+
+### Conclusion
+This feature improves the user experience by allowing quick navigation between categories without overwhelming users with redundant or unnecessary links. It makes the header more functional and adaptive to the current page, helping users find the content they need more efficiently.
