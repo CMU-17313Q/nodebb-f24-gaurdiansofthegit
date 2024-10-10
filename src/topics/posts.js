@@ -152,7 +152,6 @@ module.exports = function (Topics) {
 					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
 				} else if (postObj.isPrivate) {
-					console.log('Is user admin or global mod:', user.isAdminOrGlobalMod(uid));
 					if (!isAdminOrMod) {
 						postObj.user.username = 'Private User';
 						postObj.user.displayname = postObj.user.username;
