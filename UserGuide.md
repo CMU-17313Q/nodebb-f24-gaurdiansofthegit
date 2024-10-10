@@ -74,8 +74,8 @@ The **Private Post** feature provides an additional layer of control over post v
 
 ---
 
-# Feature 2: Filtering Bad Words in Posts,
-## As an admin I want to make sure that users cannot use offensive and inappropriate content on their posts, so I can create a safe enviorment on Nodebb.
+# Feature 2: Filtering Bad Words in Posts
+## As an admin, I want to make sure that users cannot use offensive and inappropriate content on their posts, so I can create a safe enviorment on Nodebb.
 
 The **Bad Word Filter** feature helps maintain a clean and respectful environment by preventing users from posting content containing inappropriate words. This feature uses a predefined list of bad words taken from the CMU school of computer science website, to automatically detect and filter out inappropriate content in both post titles and content.
 
