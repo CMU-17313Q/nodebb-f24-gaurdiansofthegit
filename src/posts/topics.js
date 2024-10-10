@@ -36,7 +36,7 @@ module.exports = function (Posts) {
 		const tids = postData.map(post => post && post.tid);
 		const [indices, topicData] = await Promise.all([
 			Posts.getPostIndices(postData, uid),
-			topics.getTopicsFields(tids, ['slug', 'isPrivate']), // Include isPrivate field
+			topics.getTopicsFields(tids, ['slug']),
 		]);
 		const paths = await Promise.all(pids.map(async (pid, index) => {
 			const slug = topicData[index] ? topicData[index].slug : null;
