@@ -139,7 +139,7 @@ describe('Categories', () => {
 				},
 				config: {
 					showSiteTitle: true,
-					siteTitle: 'My NodeBB Forum',
+					siteTitle: 'NodeBB',
 					relative_path: '',  // Set this to ensure URLs are correct
 				},
 				currentUrl: '/some-other-url', // Simulate that we're on a different URL
@@ -160,7 +160,7 @@ describe('Categories', () => {
 				},
 				config: {
 					showSiteTitle: true,
-					siteTitle: 'My NodeBB Forum',
+					siteTitle: 'NodeBB',
 					relative_path: '',  // Set this to ensure URLs are correct
 				},
 				currentUrl: '/some-other-url', // Simulate that we're on a different URL
@@ -181,7 +181,7 @@ describe('Categories', () => {
 				},
 				config: {
 					showSiteTitle: true,
-					siteTitle: 'My NodeBB Forum',
+					siteTitle: 'NodeBB',
 					relative_path: '',  // Set this to ensure URLs are correct
 				},
 				currentUrl: '/some-other-url', // Simulate that we're on a different URL
@@ -202,7 +202,7 @@ describe('Categories', () => {
 				},
 				config: {
 					showSiteTitle: true,
-					siteTitle: 'My NodeBB Forum',
+					siteTitle: 'NodeBB',
 					relative_path: '',  // Set this to ensure URLs are correct
 				},
 				currentUrl: '/some-other-url', // Simulate that we're on a different URL
