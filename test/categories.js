@@ -237,7 +237,13 @@ describe('Categories', () => {
 		
 			// Ensure other categories (like Announcements) are rendered correctly
 			const expectedAnnouncementsUrl = '/category/1/announcements';
-			assert(!renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
+			assert(renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
+
+			const expectedCommentsUrl = '/category/3/comments-feedback';
+			assert(!renderedHtml.includes(expectedCommentsUrl), 'Comments & Feedback link should be rendered.');
+
+			const expectedBlogsUrl = '/category/4/blogs';
+			assert(!renderedHtml.includes(expectedBlogsUrl), 'Blogs link should be rendered.');
 		});
 
 		// Test: No site title rendering when disabled
