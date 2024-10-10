@@ -14,6 +14,7 @@ const utils = require('../utils');
 
 const backlinkRegex = new RegExp(`(?:${nconf.get('url').replace('/', '\\/')}|\b|\\s)\\/topic\\/(\\d+)(?:\\/\\w+)?`, 'g');
 
+
 module.exports = function (Topics) {
 	Topics.onNewPostMade = async function (postData) {
 		await Topics.updateLastPostTime(postData.tid, postData.timestamp);
@@ -53,6 +54,10 @@ module.exports = function (Topics) {
 			postData[0].index = 0;
 			replies = postData.slice(1);
 		}
+		// Filter private posts based on user privileges
+		const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
+		postData = postData.filter(post => !post.isPrivate || isAdminOrMod);
+
 
 		Topics.calculatePostIndices(replies, repliesStart);
 		await addEventStartEnd(postData, set, reverse, topicData);
@@ -104,6 +109,7 @@ module.exports = function (Topics) {
 	}
 
 	Topics.addPostData = async function (postData, uid) {
+		const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
 		if (!Array.isArray(postData) || !postData.length) {
 			return [];
 		}
@@ -140,14 +146,14 @@ module.exports = function (Topics) {
 				postObj.replies = replies[i];
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 
-				if (postObj.uid == 0) {
+				if (postObj.uid === 0) {
 					// postObj.user.userslug = 'Anonymous'; // or set to an empty string if preferred
 					// postObj.user.displayname = 'Anonymous';
 					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
-				}
-				else if (postObj.isPrivate) {
-					if (!user.isAdminOrGlobalMod(uid)) {
+				} else if (postObj.isPrivate) {
+					console.log('Is user admin or global mod:', user.isAdminOrGlobalMod(uid));
+					if (!isAdminOrMod) {
 						postObj.user.username = 'Private User';
 						postObj.user.displayname = postObj.user.username;
 					}

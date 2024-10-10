@@ -36,6 +36,7 @@ module.exports = function (Posts) {
         const postData = await Posts.getPostsFields(pids, ['pid', 'tid']);
         const tids = postData.map(post => post && post.tid);
 
+
         const paths = await Promise.all(pids.map(async (pid, index) => {
             const slug = topicData[index] ? topicData[index].slug : null;
             const postIndex = utils.isNumber(indices[index]) ? parseInt(indices[index], 10) + 1 : null;

@@ -40,6 +40,7 @@ module.exports = function (Posts) {
 			content: content,
 			timestamp: timestamp,
 			isPrivate: isPrivate,
+			isAnonymous: isAnonymous,
 		};
 
 		if (data.toPid) {

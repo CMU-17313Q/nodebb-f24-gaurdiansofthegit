@@ -67,8 +67,18 @@ Topics.getTopicsByTids = async function (tids, options) {
 		uid = options.uid;
 	}
 
+	const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
+
 	async function loadTopics() {
 		const topics = await Topics.getTopicsData(tids);
+		// Filter private topics for non-admin/moderator users
+		const filteredTopics = [];
+		topics.filter((topic) => {
+			if (topic.isPrivate && !isAdminOrMod) {
+				return false; // Hide private topics for non-privileged users
+			}
+			return true; // Display public topics or for admin/moderators
+		});
 		const uids = _.uniq(topics.map(t => t && t.uid && t.uid.toString()).filter(v => utils.isNumber(v)));
 		const cids = _.uniq(topics.map(t => t && t.cid && t.cid.toString()).filter(v => utils.isNumber(v)));
 		const guestTopics = topics.filter(t => t && t.uid === 0);
@@ -107,7 +117,7 @@ Topics.getTopicsByTids = async function (tids, options) {
 		});
 
 		return {
-			topics,
+			topics: filteredTopics,
 			teasers,
 			usersMap: _.zipObject(uids, users),
 			categoriesMap: _.zipObject(cids, categoriesData),
