@@ -87,7 +87,7 @@ describe('Topic\'s', () => {
 				cid: topic.categoryId,
 			}, (err, result) => {
 				assert(err, 'Expected an error to be thrown');
-				assert.strictEqual(err.message, '[[error:bad-word-detected]]', 'Expected bad word detection error');
+				assert.strictEqual(err.message, '[[error:bad-word-detected, arab]]', 'Expected bad word detection error');
 				assert(!result, 'Expected no result due to bad word detection');
 				done();
 			});
