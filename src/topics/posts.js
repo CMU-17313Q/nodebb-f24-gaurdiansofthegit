@@ -140,7 +140,7 @@ module.exports = function (Topics) {
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 				// Username override for anonymous posts
 				// given by copilot, working partially
-				// console.log('is it anonymous post', postObj);
+				// console.l it anonymous post', postObj);
 				if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
 					// Username override for guests, if enabled
 					postObj.user.username = validator.escape(String(postObj.handle));
