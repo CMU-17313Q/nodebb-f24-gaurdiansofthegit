@@ -93,7 +93,7 @@ describe('Topic\'s', () => {
 			});
 		});
 
-		
+
 
 
 		// TEST CASE FOR BAD WORDS, Hello is not a bad word but the hell in Hello should not trigger any exception
@@ -211,7 +211,7 @@ describe('Topic\'s', () => {
 			});
 		});
 
-		
+
 		it('should get post count', async () => {
 			const count = await socketTopics.postcount({ uid: adminUid }, topic.tid);
 			assert.strictEqual(count, 1);
