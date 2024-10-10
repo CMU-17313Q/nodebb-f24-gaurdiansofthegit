@@ -31,6 +31,14 @@ module.exports = function (Posts) {
 			await checkToPid(data.toPid, uid);
 		}
 
+		// Load bad words list
+		const badWords = loadBadWords();
+		// Check content against bad words
+		const foundBadWord = badWords.find(word => content.includes(word));
+		if (foundBadWord) {
+			throw new Error(`[[error:bad-word-detected, ${foundBadWord}]]`);
+		}
+
 		const pid = await db.incrObjectField('global', 'nextPid');
 		let postData = {
 			pid: pid,
