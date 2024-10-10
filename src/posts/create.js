@@ -85,7 +85,7 @@ module.exports = function (Posts) {
 	// copilot assisted code: Function to load bad words from the public folder
 	function loadBadWords() {
 		console.log('Loading bad words'); // Debugging statement
-		const badWordsFilePath = path.join(__dirname, '../public/bad-words.txt');
+		const badWordsFilePath = path.join(__dirname, '../../public/bad-words.txt');
 		console.log('Bad words file path:', badWordsFilePath); // Debugging statement
 		const badWords = fs.readFileSync(badWordsFilePath, 'utf8').split('\n').map(word => word.trim());
 		console.log('Bad words:', badWords); // Debugging statement
