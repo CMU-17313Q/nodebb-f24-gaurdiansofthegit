@@ -134,6 +134,7 @@ The Anonymous Post feature enables students to create posts or questions that ar
 ### How to Use the Anonymous Post Feature ###
 
 When creating a post, students can activate the anonymous option in the posting interface. The system will replace their profile picture and username with a default "Anonymous" avatar, ensuring their identity remains confidential while allowing the instructor and students to see the content of the post.
+
 In order to actually see the full implementation of the anonymous feature, nodebb should be runned from the branch ‘backend_anonymous_fhaddad’ ; this branch will show the correct modified avatar and the ‘not found’ page for anonymous users and the anonymous display name. Also in this branch, when submitting a post the user should load the page in order to see the post submitted. While the main branch will  show a guest avatar, when hovering on the avatar. Also  anonymous link page would not be found. 
 
 ### Creating an Anonymous Post ###
