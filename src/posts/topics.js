@@ -4,6 +4,7 @@
 const topics = require('../topics');
 const user = require('../user');
 const utils = require('../utils');
+// const groups = require('../groups');
 
 module.exports = function (Posts) {
 	Posts.getPostsFromSet = async function (set, start, stop, uid, reverse) {
@@ -30,7 +31,6 @@ module.exports = function (Posts) {
 		const paths = await Posts.generatePostPaths([pid], uid);
 		return Array.isArray(paths) && paths.length ? paths[0] : null;
 	};
-
 	Posts.generatePostPaths = async function (pids, uid) {
 		const postData = await Posts.getPostsFields(pids, ['pid', 'tid']);
 		const tids = postData.map(post => post && post.tid);
@@ -38,18 +38,15 @@ module.exports = function (Posts) {
 			Posts.getPostIndices(postData, uid),
 			topics.getTopicsFields(tids, ['slug']),
 		]);
-
-		const paths = pids.map((pid, index) => {
+		const paths = await Promise.all(pids.map(async (pid, index) => {
 			const slug = topicData[index] ? topicData[index].slug : null;
 			const postIndex = utils.isNumber(indices[index]) ? parseInt(indices[index], 10) + 1 : null;
-
 			if (slug && postIndex) {
 				const index = postIndex === 1 ? '' : `/${postIndex}`;
 				return `/topic/${slug}${index}`;
 			}
 			return null;
-		});
-
+		}));
 		return paths;
 	};
 };

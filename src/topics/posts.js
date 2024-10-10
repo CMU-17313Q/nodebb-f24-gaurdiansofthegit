@@ -2,17 +2,18 @@
 'use strict';
 
 const _ = require('lodash');
-const validator = require('validator');
+// const validator = require('validator');
 const nconf = require('nconf');
 
 const db = require('../database');
 const user = require('../user');
 const posts = require('../posts');
-const meta = require('../meta');
+// const meta = require('../meta');
 const plugins = require('../plugins');
 const utils = require('../utils');
 
 const backlinkRegex = new RegExp(`(?:${nconf.get('url').replace('/', '\\/')}|\b|\\s)\\/topic\\/(\\d+)(?:\\/\\w+)?`, 'g');
+
 
 module.exports = function (Topics) {
 	Topics.onNewPostMade = async function (postData) {
@@ -53,6 +54,10 @@ module.exports = function (Topics) {
 			postData[0].index = 0;
 			replies = postData.slice(1);
 		}
+		// Filter private posts based on user privileges
+		// const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
+		// postData = postData.filter(post => !(post.isPrivate && !isAdminOrMod));
+
 
 		Topics.calculatePostIndices(replies, repliesStart);
 		await addEventStartEnd(postData, set, reverse, topicData);
@@ -104,6 +109,7 @@ module.exports = function (Topics) {
 	}
 
 	Topics.addPostData = async function (postData, uid) {
+		const isAdminOrMod = await user.isAdminOrGlobalMod(uid);
 		if (!Array.isArray(postData) || !postData.length) {
 			return [];
 		}
@@ -140,10 +146,16 @@ module.exports = function (Topics) {
 				postObj.replies = replies[i];
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 
-				// Username override for guests, if enabled
-				if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
-					postObj.user.username = validator.escape(String(postObj.handle));
+				if (postObj.uid === 0) {
+					// postObj.user.userslug = 'Anonymous'; // or set to an empty string if preferred
+					// postObj.user.displayname = 'Anonymous';
+					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
+				} else if (postObj.isPrivate) {
+					if (!isAdminOrMod) {
+						postObj.user.username = 'Private User';
+						postObj.user.displayname = postObj.user.username;
+					}
 				}
 			}
 		});
