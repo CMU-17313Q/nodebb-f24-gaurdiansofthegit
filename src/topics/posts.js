@@ -2,13 +2,13 @@
 'use strict';
 
 const _ = require('lodash');
-const validator = require('validator');
+// const validator = require('validator');
 const nconf = require('nconf');
 
 const db = require('../database');
 const user = require('../user');
 const posts = require('../posts');
-const meta = require('../meta');
+// const meta = require('../meta');
 const plugins = require('../plugins');
 const utils = require('../utils');
 
@@ -140,9 +140,10 @@ module.exports = function (Topics) {
 				postObj.replies = replies[i];
 				postObj.selfPost = parseInt(uid, 10) > 0 && parseInt(uid, 10) === postObj.uid;
 
-				// Username override for guests, if enabled
-				if (meta.config.allowGuestHandles && postObj.uid === 0 && postObj.handle) {
-					postObj.user.username = validator.escape(String(postObj.handle));
+				if (postObj.anonymous !== false) {
+					// postObj.user.userslug = 'Anonymous'; // or set to an empty string if preferred
+					// postObj.user.displayname = 'Anonymous';
+					postObj.user.username = 'Anonymous';
 					postObj.user.displayname = postObj.user.username;
 				}
 			}

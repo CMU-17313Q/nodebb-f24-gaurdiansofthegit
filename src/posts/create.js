@@ -14,15 +14,14 @@ const groups = require('../groups');
 const privileges = require('../privileges');
 
 module.exports = function (Posts) {
-    Posts.create = async function (data) {
-        console.log('Creating post'); // Debugging statement
-        // This is an internal method, consider using Topics.reply instead
-        const { uid } = data;
-        const { tid } = data;
-        const content = data.content.toString();
-        const timestamp = data.timestamp || Date.now();
-        const isMain = data.isMain || false;
-        const isAnonymous = data.isAnonymous || false;
+	Posts.create = async function (data) {
+		// This is an internal method, consider using Topics.reply instead
+		const { uid } = data;
+		const { tid } = data;
+		const content = data.content.toString();
+		const timestamp = data.timestamp || Date.now();
+		const isMain = data.isMain || false;
+		const isAnonymous = data.isAnonymous || false;
 
         if (!uid && parseInt(uid, 10) !== 0) {
             throw new Error('[[error:invalid-uid]]');
@@ -32,14 +31,14 @@ module.exports = function (Posts) {
             await checkToPid(data.toPid, uid);
         }
 
-        const pid = await db.incrObjectField('global', 'nextPid');
-        let postData = {
-            pid: pid,
-            uid: isAnonymous ? 0 : data.uid,
-            tid: tid,
-            content: content,
-            timestamp: timestamp,
-        };
+		const pid = await db.incrObjectField('global', 'nextPid');
+		let postData = {
+			pid: pid,
+			uid: isAnonymous ? 0 : data.uid,
+			tid: tid,
+			content: content,
+			timestamp: timestamp,
+		};
 
         if (data.toPid) {
             postData.toPid = data.toPid;
