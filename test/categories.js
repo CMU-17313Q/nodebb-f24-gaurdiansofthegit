@@ -153,7 +153,41 @@ describe('Categories', () => {
 			assert(renderedHtml.includes(expectedAnnouncementsUrl), 'Announcements link should be rendered.');
 		});
 
+		// Test: No site title rendering when disabled
+		it('should not render the site title when disabled', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: false,
+					siteTitle: 'Test Site',
+				}
+			};
 
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+			assert(!renderedHtml.includes('Test Site'), 'Site title should not be rendered.');
+		});
+
+		// Test: Render site title when enabled
+		it('should render the site title when enabled', () => {
+			const data = {
+				brand: {
+					logo: 'logo.png',
+				},
+				config: {
+					showSiteTitle: true,
+					siteTitle: 'NodeBB',
+				}
+			};
+
+			const renderedHtml = renderTemplate(brandTemplateContent, data);
+
+			console.log('Debug: Site title in data:', data.config.siteTitle);
+    		console.log('Debug: Rendered HTML:', renderedHtml);
+
+			assert(!renderedHtml.includes('NodeBB'), 'Site title should be rendered.');
+		});
 
 		
     });
