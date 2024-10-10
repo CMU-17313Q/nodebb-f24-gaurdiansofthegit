@@ -77,18 +77,18 @@ describe('Topic\'s', () => {
 			});
 		});
 
-		//TEST CASE FOR BAD WORDS, arab is a bad word
-		it('should create a new topic with inappropriate words', (done) => {
-			console.log("#############################################################################################33")
+		// TEST CASE FOR BAD WORDS, "arab" is a bad word
+		// COPILOT ASSISTED CODE
+		it('should not create a new topic with inappropriate words', (done) => {
 			topics.post({
 				uid: topic.userId,
 				title: topic.title,
 				content: "helooooo my name is arab",
 				cid: topic.categoryId,
 			}, (err, result) => {
-				assert.ifError(err);
-				assert(result);
-				topic.tid = result.topicData.tid;
+				assert(err, 'Expected an error to be thrown');
+				assert.strictEqual(err.message, '[[error:bad-word-detected]]', 'Expected bad word detection error');
+				assert(!result, 'Expected no result due to bad word detection');
 				done();
 			});
 		});
@@ -101,7 +101,7 @@ describe('Topic\'s', () => {
 			topics.post({
 				uid: topic.userId,
 				title: topic.title,
-				content: "Hello SHOULD not flag anything even if the first 4 letters can be a bad word",
+				content: "hello should not flag anything even though the first 4 letters can be a bad word",
 				cid: topic.categoryId,
 			}, (err, result) => {
 				assert.ifError(err);
