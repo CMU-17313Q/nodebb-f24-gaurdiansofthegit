@@ -95,7 +95,21 @@ describe('Topic\'s', () => {
 
 
 		
-
+		// TEST CASE FOR BAD WORDS, Hello is not a bad word but the hell in Hello should not trigger any exception
+		it('should create a new topic with inappropriate word in a normal word', (done) => {
+			console.log("#############################################################################################33")
+			topics.post({
+				uid: topic.userId,
+				title: topic.title,
+				content: "Hello SHOULD not flag anything even if the first 4 letters can be a bad word",
+				cid: topic.categoryId,
+			}, (err, result) => {
+				assert.ifError(err);
+				assert(result);
+				topic.tid = result.topicData.tid;
+				done();
+			});
+		});
 
 		it('should get post count', async () => {
 			const count = await socketTopics.postcount({ uid: adminUid }, topic.tid);
