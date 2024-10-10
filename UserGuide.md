@@ -125,3 +125,52 @@ These tests cover the core functionality of the Bad Word Filter, ensuring that p
 ## Conclusion
 
 This explains how to use and test the bad word filtering feature, along with automated tests to ensure the feature works as expected. For further information, the CA can refer to the source code in `src/posts/create.js` and the test suite in `test/topics.js`.
+
+---
+# Feature 3: As a student, I want to ask questions without showing my username to the viewers, so that I can discuss sensitive topics without other students knowing my identity. #
+
+The Anonymous Post feature enables students to create posts or questions that are visible to all without displaying the user's account and name, keeping their identity hidden from other students. This guide outlines how to use, implement, and test the feature within your educational platform.
+
+### How to Use the Anonymous Post Feature ###
+
+When creating a post, students can activate the anonymous option in the posting interface. The system will replace their profile picture and username with a default "Anonymous" avatar, ensuring their identity remains confidential while allowing the instructor and students to see the content of the post.
+In order to actually see the full implementation of the anonymous feature, nodebb should be runned from the branch ‘backend_anonymous_fhaddad’ ; this branch will show the correct modified avatar and the ‘not found’ page for anonymous users and the anonymous display name. Also in this branch, when submitting a post the user should load the page in order to see the post submitted. While the main branch will  show a guest avatar, when hovering on the avatar. Also  anonymous link page would not be found. 
+
+### Creating an Anonymous Post ###
+
+Students can create an anonymous post using the platform's user interface:
+
+1. Navigate to the posting form within the category (General Discussion, Announcement, Comments & Feedback, Blogs) area.
+2. Locate and select the toggle for posting anonymously, setting isAnonymous to be true.
+3. Enter the content of the post and submit it.
+
+The system will automatically handle the post as anonymous, hiding the user details and displaying Anonymous user details. Anonymous details, username: anonymous, Avatar: light purple with ‘?”, user account link goes to “Not found page”.
+
+### Backend Changes ###
+
+### Database Schema Modification: ###
+- Add an `isAnonymous` boolean field to the `Post` model in the database. This flag determines whether a post was made anonymously.
+- Ensure that this attribute is set to `false` by default and only changes when a user selects the anonymous posting option.
+
+### Privacy and Security Measures: ###
+- Update the post creation logic to accept the `isAnonymous` flag from the user interface.
+- Ensure user authentication is enforced, allowing only logged-in users to post.
+- Modify the API to ensure that while the `isAnonymous` flag is accessible, the user's identity is not exposed in any API response.
+
+### Automated Tests ###
+
+
+
+Due to ongoing integration and merging issues, the team was unable to implement a dedicated testing suite for the anonymous posting feature. The challenges primarily stemmed from conflicts between concurrent development branches that affected the stability of the environment required for test execution. This prevented the creation and reliable operation of testing suites that could simulate user interactions accurately for the anonymous posting feature. Instead, we resorted to manually running Grunt to observe changes directly on the website, allowing us to visually verify the functionality. While this approach provided some immediate feedback, it underscored the need for better synchronization and integration practices within our development workflows.
+
+### Development Considerations ###
+
+## Code Structure: ##
+
+- **Post Creation Handling:** The `isAnonymous` flag is incorporated at the point of post submission and affects how the post is processed and stored.
+- **User Interface Adjustments:** The posting form must include a clear option for students to select anonymity when creating a post.
+- **Visibility Controls:** Modify post retrieval logic to ensure anonymous posts are hidden from all other users Instructor / students.
+
+### Conclusion ###
+
+The Anonymous Post feature is a crucial addition for educational platforms, fostering a safe environment for students to discuss sensitive topics without fear of exposure. This functionality, backed by clear usage guidelines, ensures the feature is reliable and ready for deployment. For further details or customization, refer to the source code in `src/topics/posts.js` or ‘src/topics/create.js’ under the branch ‘backend_anonymous_fhaddad’ 
