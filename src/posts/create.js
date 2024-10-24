@@ -45,7 +45,6 @@ module.exports = function (Posts) {
 			throw new Error(`[[error:bad-word-detected, ${detectedBadWords.join(', ')}]]`);
 		}
 
-		// this is a comment
 		const pid = await db.incrObjectField('global', 'nextPid');
 		let postData = {
 			pid: pid,
