@@ -34,6 +34,7 @@ Upgrade.getAll = async function () {
 		if (semverCompare) {
 			return semverCompare;
 		}
+		// this is a comment to trigger a push
 		const timestampA = require(a).timestamp;
 		const timestampB = require(b).timestamp;
 		return timestampA - timestampB;
