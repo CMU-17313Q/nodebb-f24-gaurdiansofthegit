@@ -50,5 +50,5 @@ jobs:
         with:
           app-name: 'nodebb-gaurdiansofthegit'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ED41D87E3AAD42C3907DC9DBB267F557 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_40C904E865C148D292781EE635146959 }}
           package: .
