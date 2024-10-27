@@ -2,6 +2,7 @@
 // comment to trigger a sonar cube test
 // comment to trigger a sonar cube test 2
 // comment to trigger a sonar cube test 3
+// comment to trigger a sonar cube test 4
 const fs = require('fs');
 const nconf = require('nconf');
 const path = require('path');
