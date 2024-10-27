@@ -12,7 +12,6 @@ module.exports = function (Categories) {
 		const page = data.page || 1;
 		const uid = data.uid || 0;
 		const paginate = data.hasOwnProperty('paginate') ? data.paginate : true;
-
 		const startTime = process.hrtime();
 
 		let cids = await findCids(query, data.hardCap);
