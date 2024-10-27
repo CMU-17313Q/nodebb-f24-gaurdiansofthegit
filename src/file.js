@@ -1,5 +1,6 @@
 'use strict';
 // comment to trigger a sonar cube test
+// comment to trigger a sonar cube test 2
 const fs = require('fs');
 const nconf = require('nconf');
 const path = require('path');
