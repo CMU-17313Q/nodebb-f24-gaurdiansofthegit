@@ -2,5 +2,5 @@ projectKey=GuardiansOfTheGit-Sonar-Qube-Test
 serverUrl=http://localhost:9000
 serverVersion=10.7.0.96327
 dashboardUrl=http://localhost:9000/dashboard?id=GuardiansOfTheGit-Sonar-Qube-Test
-ceTaskId=c5f4efef-5807-4e8b-a99c-befbfe029146
-ceTaskUrl=http://localhost:9000/api/ce/task?id=c5f4efef-5807-4e8b-a99c-befbfe029146
+ceTaskId=d7745ab0-fa98-486b-8745-93940f80ed51
+ceTaskUrl=http://localhost:9000/api/ce/task?id=d7745ab0-fa98-486b-8745-93940f80ed51
