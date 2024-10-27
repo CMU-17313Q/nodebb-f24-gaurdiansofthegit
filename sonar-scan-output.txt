@@ -1,0 +1,271 @@
+22:40:58.881 INFO  Scanner configuration file: /home/ray/Project3/sonar-scanner-6.2.1.4610-linux-x64/conf/sonar-scanner.properties
+22:40:58.887 INFO  Project root configuration file: /home/ray/Project3/nodebb-f24-gaurdiansofthegit/sonar-project.properties
+22:40:58.918 INFO  SonarScanner CLI 6.2.1.4610
+22:40:58.921 INFO  Java 17.0.12 Eclipse Adoptium (64-bit)
+22:40:58.922 INFO  Linux 5.15.153.1-microsoft-standard-WSL2 amd64
+22:40:58.935 DEBUG Scanner max available memory: 982 MB
+22:40:58.987 DEBUG uname -m returned 'x86_64'
+22:40:58.990 DEBUG Create: /home/ray/.sonar/cache
+22:40:58.991 INFO  User cache: /home/ray/.sonar/cache
+22:40:58.991 DEBUG Create: /home/ray/.sonar/cache/_tmp
+22:40:59.622 DEBUG Loaded [438] system trusted certificates
+22:40:59.884 DEBUG --> GET http://localhost:9000/api/v2/analysis/version
+22:40:59.944 DEBUG <-- 200 http://localhost:9000/api/v2/analysis/version (60ms, 12-byte body)
+22:40:59.956 INFO  JRE provisioning: os[linux], arch[x86_64]
+22:40:59.958 DEBUG --> GET http://localhost:9000/api/v2/analysis/jres?os=linux&arch=x86_64
+22:40:59.967 DEBUG <-- 200 http://localhost:9000/api/v2/analysis/jres?os=linux&arch=x86_64 (7ms, unknown-length body)
+22:41:00.056 DEBUG Executing: /home/ray/.sonar/cache/bcb1b7b8ad68c93093f09b591b7cb17161d39891f7d29d33a586f5a328603707/OpenJDK17U-jre_x64_linux_hotspot_17.0.11_9.tar.gz_extracted/jdk-17.0.11+9-jre/bin/java --version
+22:41:00.123 DEBUG openjdk 17.0.11 2024-04-16
+22:41:00.123 DEBUG OpenJDK Runtime Environment Temurin-17.0.11+9 (build 17.0.11+9)
+22:41:00.124 DEBUG OpenJDK 64-Bit Server VM Temurin-17.0.11+9 (build 17.0.11+9, mixed mode, sharing)
+22:41:00.129 DEBUG --> GET http://localhost:9000/api/v2/analysis/engine
+22:41:00.134 DEBUG <-- 200 http://localhost:9000/api/v2/analysis/engine (5ms, unknown-length body)
+22:41:00.140 INFO  Communicating with SonarQube Server 10.7.0.96327
+22:41:00.142 DEBUG Work directory: /home/ray/Project3/nodebb-f24-gaurdiansofthegit/.scannerwork
+22:41:00.163 DEBUG Executing: /home/ray/.sonar/cache/bcb1b7b8ad68c93093f09b591b7cb17161d39891f7d29d33a586f5a328603707/OpenJDK17U-jre_x64_linux_hotspot_17.0.11_9.tar.gz_extracted/jdk-17.0.11+9-jre/bin/java -jar /home/ray/.sonar/cache/d5653c126135ff7d09813343eecfaa5f971529fd7e75aa30085a33bd426a5c6c/sonar-scanner-engine-shaded-10.7.0.96327-all.jar
+22:41:00.573 INFO  Starting SonarScanner Engine...
+22:41:00.575 INFO  Java 17.0.11 Eclipse Adoptium (64-bit)
+22:41:00.643 DEBUG JVM max available memory: 982 MB
+22:41:00.783 DEBUG Community 10.7.0.96327
+22:41:00.915 DEBUG Sonar User Home: /home/ray/.sonar
+22:41:01.349 DEBUG Loaded [438] system trusted certificates
+22:41:01.767 INFO  Load global settings
+22:41:01.789 DEBUG --> GET http://localhost:9000/api/settings/values.protobuf
+22:41:01.866 DEBUG <-- 200 http://localhost:9000/api/settings/values.protobuf (76ms, 6670-byte body)
+22:41:01.912 INFO  Load global settings (done) | time=144ms
+22:41:01.915 INFO  Server id: 147B411E-AZLKdG7gx2lHpy43YwOJ
+22:41:01.927 DEBUG User cache: /home/ray/.sonar/cache
+22:41:01.939 INFO  Loading required plugins
+22:41:01.941 INFO  Load plugins index
+22:41:01.942 DEBUG --> GET http://localhost:9000/api/plugins/installed
+22:41:01.950 DEBUG <-- 200 http://localhost:9000/api/plugins/installed (7ms, unknown-length body)
+22:41:01.958 INFO  Load plugins index (done) | time=17ms
+22:41:01.958 INFO  Load/download plugins
+22:41:01.999 INFO  Load/download plugins (done) | time=41ms
+22:41:01.999 DEBUG Plugins not loaded because they are optional: [csharp, flex, go, web, javasymbolicexecution, java, javascript, kotlin, php, python, ruby, sonarscala, vbnet]
+22:41:02.018 DEBUG Plugins loaded:
+22:41:02.018 DEBUG   * JaCoCo 1.3.0.1538 (jacoco)
+22:41:02.019 DEBUG   * IaC Code Quality and Security 1.36.0.12431 (iac)
+22:41:02.019 DEBUG   * Text Code Quality and Security 2.16.0.4008 (text)
+22:41:02.019 DEBUG   * Clean as You Code 2.4.0.2018 (cayc)
+22:41:02.019 DEBUG   * XML Code Quality and Security 2.10.0.4108 (xml)
+22:41:02.331 DEBUG register org.eclipse.jgit.util.FS$FileStoreAttributes$$Lambda$335/0x00007f537825ca00@2577d6c8 with shutdown hook
+22:41:02.572 INFO  Process project properties
+22:41:02.586 INFO  Process project properties (done) | time=14ms
+22:41:03.222 INFO  Project key: GuardiansOfTheGit-Sonar-Qube-Test
+22:41:03.224 INFO  Base dir: /home/ray/Project3/nodebb-f24-gaurdiansofthegit
+22:41:03.224 INFO  Working dir: /home/ray/Project3/nodebb-f24-gaurdiansofthegit/.scannerwork
+22:41:03.225 DEBUG Project global encoding: UTF-8, default locale: en
+22:41:03.248 INFO  Load project settings for component key: 'GuardiansOfTheGit-Sonar-Qube-Test'
+22:41:03.274 DEBUG --> GET http://localhost:9000/api/settings/values.protobuf?component=GuardiansOfTheGit-Sonar-Qube-Test
+22:41:03.303 DEBUG <-- 200 http://localhost:9000/api/settings/values.protobuf?component=GuardiansOfTheGit-Sonar-Qube-Test (26ms, 6678-byte body)
+22:41:03.303 INFO  Load project settings for component key: 'GuardiansOfTheGit-Sonar-Qube-Test' (done) | time=55ms
+22:41:03.341 DEBUG Creating module hierarchy
+22:41:03.342 DEBUG   Init module 'GuardiansOfTheGit-Sonar-Qube-Test'
+22:41:03.343 DEBUG     Base dir: /home/ray/Project3/nodebb-f24-gaurdiansofthegit
+22:41:03.345 DEBUG     Working dir: /home/ray/Project3/nodebb-f24-gaurdiansofthegit/.scannerwork
+22:41:03.345 DEBUG     Module global encoding: UTF-8, default locale: en
+22:41:03.368 INFO  Load quality profiles
+22:41:03.370 DEBUG --> GET http://localhost:9000/api/qualityprofiles/search.protobuf?project=GuardiansOfTheGit-Sonar-Qube-Test
+22:41:03.446 DEBUG <-- 200 http://localhost:9000/api/qualityprofiles/search.protobuf?project=GuardiansOfTheGit-Sonar-Qube-Test (73ms, 3050-byte body)
+22:41:03.477 INFO  Load quality profiles (done) | time=108ms
+22:41:03.559 INFO  Load active rules
+22:41:03.561 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=ec314810-c26a-4589-9fa0-5399e2737c55&ps=500&p=1
+22:41:03.735 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=ec314810-c26a-4589-9fa0-5399e2737c55&ps=500&p=1 (174ms, 7151-byte body)
+22:41:03.984 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=e80b3e3b-636b-45f3-8ee8-82427c84fb42&ps=500&p=1
+22:41:04.026 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=e80b3e3b-636b-45f3-8ee8-82427c84fb42&ps=500&p=1 (40ms, unknown-length body)
+22:41:04.029 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=b5db6174-8afd-457e-92d7-37f06758887a&ps=500&p=1
+22:41:04.108 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=b5db6174-8afd-457e-92d7-37f06758887a&ps=500&p=1 (78ms, unknown-length body)
+22:41:04.114 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=d9f593bf-df1c-42a1-97c9-8e0ca3eb6ad2&ps=500&p=1
+22:41:04.125 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=d9f593bf-df1c-42a1-97c9-8e0ca3eb6ad2&ps=500&p=1 (8ms, 12-byte body)
+22:41:04.125 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=9946a2ee-63f0-42b8-946c-961682788a5e&ps=500&p=1
+22:41:05.311 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=9946a2ee-63f0-42b8-946c-961682788a5e&ps=500&p=1 (1187ms, unknown-length body)
+22:41:05.518 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=f6ce4276-06ef-4b96-af8f-05945014ce1b&ps=500&p=1
+22:41:06.504 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=f6ce4276-06ef-4b96-af8f-05945014ce1b&ps=500&p=1 (985ms, unknown-length body)
+22:41:06.565 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=e57df51b-62ac-4149-b42f-43e92655aea1&ps=500&p=1
+22:41:06.906 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=e57df51b-62ac-4149-b42f-43e92655aea1&ps=500&p=1 (338ms, unknown-length body)
+22:41:06.917 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=9f194254-08e4-4aa8-b8a2-99727c06f7e6&ps=500&p=1
+22:41:08.656 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=9f194254-08e4-4aa8-b8a2-99727c06f7e6&ps=500&p=1 (1728ms, unknown-length body)
+22:41:08.680 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=9f194254-08e4-4aa8-b8a2-99727c06f7e6&ps=500&p=2
+22:41:08.736 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=9f194254-08e4-4aa8-b8a2-99727c06f7e6&ps=500&p=2 (54ms, 3863-byte body)
+22:41:08.740 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=8d23f19b-d867-44da-bcb1-1d203ad01ee8&ps=500&p=1
+22:41:08.971 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=8d23f19b-d867-44da-bcb1-1d203ad01ee8&ps=500&p=1 (232ms, unknown-length body)
+22:41:08.976 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=6998cacf-6770-451f-b8f7-fc3995ad85af&ps=500&p=1
+22:41:09.098 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=6998cacf-6770-451f-b8f7-fc3995ad85af&ps=500&p=1 (122ms, unknown-length body)
+22:41:09.111 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=82523814-08d2-4f43-a2de-0cab602b6872&ps=500&p=1
+22:41:09.215 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=82523814-08d2-4f43-a2de-0cab602b6872&ps=500&p=1 (108ms, 7249-byte body)
+22:41:09.216 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=09a1f67c-e6a8-4470-915d-d5b02105fa38&ps=500&p=1
+22:41:09.232 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=09a1f67c-e6a8-4470-915d-d5b02105fa38&ps=500&p=1 (18ms, 12-byte body)
+22:41:09.232 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=19914190-61b4-4eb0-9c21-016f2fb74f48&ps=500&p=1
+22:41:10.193 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=19914190-61b4-4eb0-9c21-016f2fb74f48&ps=500&p=1 (960ms, unknown-length body)
+22:41:10.212 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=5dd271d9-8d41-42fe-abab-3529da28dd7a&ps=500&p=1
+22:41:10.235 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=5dd271d9-8d41-42fe-abab-3529da28dd7a&ps=500&p=1 (19ms, 358-byte body)
+22:41:10.236 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=eeabf43c-2476-4194-99ea-f291b2319ab9&ps=500&p=1
+22:41:10.687 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=eeabf43c-2476-4194-99ea-f291b2319ab9&ps=500&p=1 (450ms, unknown-length body)
+22:41:10.698 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=9d7b7936-e2ae-4705-a174-1e3f210a5893&ps=500&p=1
+22:41:10.842 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=9d7b7936-e2ae-4705-a174-1e3f210a5893&ps=500&p=1 (138ms, unknown-length body)
+22:41:10.844 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=07fd8482-cfb1-4e05-a260-b6151837e682&ps=500&p=1
+22:41:10.854 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=07fd8482-cfb1-4e05-a260-b6151837e682&ps=500&p=1 (8ms, 12-byte body)
+22:41:10.855 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=391fa69e-a6a7-4d0c-82cc-57d65af6d977&ps=500&p=1
+22:41:10.935 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=391fa69e-a6a7-4d0c-82cc-57d65af6d977&ps=500&p=1 (79ms, 7691-byte body)
+22:41:10.935 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=f4118670-c40c-4ef4-aeef-c9752e355256&ps=500&p=1
+22:41:11.264 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=f4118670-c40c-4ef4-aeef-c9752e355256&ps=500&p=1 (328ms, unknown-length body)
+22:41:11.273 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=11210c7e-e082-47db-81b7-cf09892c6d0f&ps=500&p=1
+22:41:11.671 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=11210c7e-e082-47db-81b7-cf09892c6d0f&ps=500&p=1 (395ms, unknown-length body)
+22:41:11.676 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=bb55d005-f4dd-4160-b98a-7d4b1a30822f&ps=500&p=1
+22:41:11.741 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=bb55d005-f4dd-4160-b98a-7d4b1a30822f&ps=500&p=1 (65ms, unknown-length body)
+22:41:11.741 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=ea93a234-d181-438e-9e23-64431b5c689d&ps=500&p=1
+22:41:12.843 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=ea93a234-d181-438e-9e23-64431b5c689d&ps=500&p=1 (1098ms, unknown-length body)
+22:41:12.866 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=9f288511-062d-4d6f-961a-983dfae1f5f3&ps=500&p=1
+22:41:13.502 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=9f288511-062d-4d6f-961a-983dfae1f5f3&ps=500&p=1 (635ms, unknown-length body)
+22:41:13.513 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=454e4e3b-6322-4c71-b982-ab97c1d6f3a8&ps=500&p=1
+22:41:13.716 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=454e4e3b-6322-4c71-b982-ab97c1d6f3a8&ps=500&p=1 (201ms, unknown-length body)
+22:41:13.717 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=dcac8aa2-1c37-465e-b6e2-18d494a3b24d&ps=500&p=1
+22:41:13.865 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=dcac8aa2-1c37-465e-b6e2-18d494a3b24d&ps=500&p=1 (147ms, unknown-length body)
+22:41:13.866 DEBUG --> GET http://localhost:9000/api/rules/list.protobuf?qprofile=114c4ade-adf2-47b0-9577-9eadb076ad18&ps=500&p=1
+22:41:14.946 DEBUG <-- 200 http://localhost:9000/api/rules/list.protobuf?qprofile=114c4ade-adf2-47b0-9577-9eadb076ad18&ps=500&p=1 (1077ms, unknown-length body)
+22:41:15.036 INFO  Load active rules (done) | time=11477ms
+22:41:15.058 INFO  Load analysis cache
+22:41:15.059 DEBUG --> GET http://localhost:9000/api/analysis_cache/get?project=GuardiansOfTheGit-Sonar-Qube-Test
+22:41:15.070 DEBUG <-- 404 http://localhost:9000/api/analysis_cache/get?project=GuardiansOfTheGit-Sonar-Qube-Test (11ms, unknown-length body)
+22:41:15.072 INFO  Load analysis cache (404) | time=13ms
+22:41:15.179 DEBUG --> GET http://localhost:9000/api/languages/list
+22:41:15.189 DEBUG <-- 200 http://localhost:9000/api/languages/list (9ms, unknown-length body)
+22:41:15.258 WARN  The property 'sonar.login' is deprecated and will be removed in the future. Please use the 'sonar.token' property instead when passing a token.
+22:41:15.268 DEBUG Declared patterns of language Kubernetes were converted to sonar.lang.patterns.kubernetes : 
+22:41:15.272 DEBUG Declared patterns of language CSS were converted to sonar.lang.patterns.css : **/*.css,**/*.less,**/*.scss,**/*.sass
+22:41:15.273 DEBUG Declared patterns of language Scala were converted to sonar.lang.patterns.scala : **/*.scala
+22:41:15.273 DEBUG Declared patterns of language JSP were converted to sonar.lang.patterns.jsp : **/*.jsp,**/*.jspf,**/*.jspx
+22:41:15.274 DEBUG Declared patterns of language JavaScript were converted to sonar.lang.patterns.js : **/*.js,**/*.jsx,**/*.cjs,**/*.mjs,**/*.vue
+22:41:15.274 DEBUG Declared patterns of language Python were converted to sonar.lang.patterns.py : **/*.py
+22:41:15.274 DEBUG Declared patterns of language Docker were converted to sonar.lang.patterns.docker : **/Dockerfile,**/*.dockerfile
+22:41:15.274 DEBUG Declared patterns of language Java were converted to sonar.lang.patterns.java : **/*.java,**/*.jav
+22:41:15.276 DEBUG Declared patterns of language HTML were converted to sonar.lang.patterns.web : **/*.html,**/*.xhtml,**/*.cshtml,**/*.vbhtml,**/*.aspx,**/*.ascx,**/*.rhtml,**/*.erb,**/*.shtm,**/*.shtml,**/*.cmp,**/*.twig
+22:41:15.277 DEBUG Declared patterns of language Flex were converted to sonar.lang.patterns.flex : **/*.as
+22:41:15.277 DEBUG Declared patterns of language XML were converted to sonar.lang.patterns.xml : **/*.xml,**/*.xsd,**/*.xsl,**/*.config
+22:41:15.278 DEBUG Declared patterns of language JSON were converted to sonar.lang.patterns.json : **/*.json
+22:41:15.279 DEBUG Declared patterns of language IPython Notebooks were converted to sonar.lang.patterns.ipynb : **/*.ipynb
+22:41:15.280 DEBUG Declared patterns of language Text were converted to sonar.lang.patterns.text : 
+22:41:15.290 DEBUG Declared patterns of language VB.NET were converted to sonar.lang.patterns.vbnet : **/*.vb
+22:41:15.291 DEBUG Declared patterns of language CloudFormation were converted to sonar.lang.patterns.cloudformation : 
+22:41:15.291 DEBUG Declared patterns of language YAML were converted to sonar.lang.patterns.yaml : **/*.yaml,**/*.yml
+22:41:15.292 DEBUG Declared patterns of language Go were converted to sonar.lang.patterns.go : **/*.go
+22:41:15.295 DEBUG Declared patterns of language Kotlin were converted to sonar.lang.patterns.kotlin : **/*.kt,**/*.kts
+22:41:15.295 DEBUG Declared patterns of language Secrets were converted to sonar.lang.patterns.secrets : 
+22:41:15.296 DEBUG Declared patterns of language Ruby were converted to sonar.lang.patterns.ruby : **/*.rb
+22:41:15.296 DEBUG Declared patterns of language C# were converted to sonar.lang.patterns.cs : **/*.cs,**/*.razor
+22:41:15.297 DEBUG Declared patterns of language PHP were converted to sonar.lang.patterns.php : **/*.php,**/*.php3,**/*.php4,**/*.php5,**/*.phtml,**/*.inc
+22:41:15.297 DEBUG Declared patterns of language Terraform were converted to sonar.lang.patterns.terraform : **/*.tf
+22:41:15.298 DEBUG Declared patterns of language AzureResourceManager were converted to sonar.lang.patterns.azureresourcemanager : **/*.bicep
+22:41:15.300 DEBUG Declared patterns of language TypeScript were converted to sonar.lang.patterns.ts : **/*.ts,**/*.tsx,**/*.cts,**/*.mts
+22:41:15.328 INFO  Preprocessing files...
+22:41:15.352 DEBUG loading config FileBasedConfig[/home/ray/.config/jgit/config]
+22:41:15.353 DEBUG readpipe [/usr/bin/git, --version],/usr/bin
+22:41:15.387 DEBUG readpipe may return 'git version 2.34.1'
+22:41:15.387 DEBUG remaining output:
+
+22:41:15.388 DEBUG readpipe [/usr/bin/git, config, --system, --show-origin, --list, -z],/usr/bin
+22:41:15.393 DEBUG readpipe may return 'null'
+22:41:15.394 DEBUG remaining output:
+
+22:41:15.397 DEBUG readpipe rc=128
+22:41:15.398 DEBUG Exception caught during execution of command '[/usr/bin/git, config, --system, --show-origin, --list, -z]' in '/usr/bin', return code '128', error message 'fatal: unable to read config file '/etc/gitconfig': No such file or directory
+'
+22:41:15.407 DEBUG loading config FileBasedConfig[/home/ray/.config/git/config]
+22:41:15.408 DEBUG loading config UserConfigFile[/home/ray/.gitconfig]
+22:41:16.052 DEBUG 5701 non excluded files in this Git repository
+22:41:16.149 INFO  0 languages detected in 0 preprocessed files
+22:41:16.149 INFO  742 files ignored because of inclusion/exclusion patterns
+22:41:16.149 INFO  0 files ignored because of scm ignore settings
+22:41:16.154 INFO  Loading plugins for detected languages
+22:41:16.154 DEBUG Detected languages: []
+22:41:16.155 INFO  Load/download plugins
+22:41:16.155 INFO  Load/download plugins (done) | time=1ms
+22:41:16.156 DEBUG Optional language-specific plugins not loaded: [csharp, flex, go, web, javasymbolicexecution, java, javascript, kotlin, php, python, ruby, sonarscala, vbnet]
+22:41:16.158 DEBUG No plugins loaded
+22:41:16.280 INFO  Load project repositories
+22:41:16.281 DEBUG --> GET http://localhost:9000/batch/project.protobuf?key=GuardiansOfTheGit-Sonar-Qube-Test
+22:41:16.301 DEBUG <-- 200 http://localhost:9000/batch/project.protobuf?key=GuardiansOfTheGit-Sonar-Qube-Test (19ms, 0-byte body)
+22:41:16.317 INFO  Load project repositories (done) | time=38ms
+22:41:16.347 DEBUG Available languages:
+22:41:16.348 DEBUG   * Terraform => "terraform"
+22:41:16.348 DEBUG   * CloudFormation => "cloudformation"
+22:41:16.348 DEBUG   * Kubernetes => "kubernetes"
+22:41:16.348 DEBUG   * Docker => "docker"
+22:41:16.348 DEBUG   * AzureResourceManager => "azureresourcemanager"
+22:41:16.349 DEBUG   * YAML => "yaml"
+22:41:16.349 DEBUG   * JSON => "json"
+22:41:16.349 DEBUG   * Text => "text"
+22:41:16.349 DEBUG   * Secrets => "secrets"
+22:41:16.349 DEBUG   * XML => "xml"
+22:41:16.355 INFO  Indexing files...
+22:41:16.355 INFO  Project configuration:
+22:41:16.356 INFO    Included sources: src/*
+22:41:16.356 INFO    Excluded sources: src/**/*
+22:41:16.360 INFO  0 files indexed
+22:41:16.362 INFO  ------------- Run sensors on module GuardiansOfTheGit-Sonar-Qube-Test
+22:41:16.414 INFO  Load metrics repository
+22:41:16.414 DEBUG --> GET http://localhost:9000/api/metrics/search?ps=500&p=1
+22:41:16.425 DEBUG <-- 200 http://localhost:9000/api/metrics/search?ps=500&p=1 (12ms, unknown-length body)
+22:41:16.450 INFO  Load metrics repository (done) | time=38ms
+22:41:16.822 DEBUG 'Import external issues report' skipped because one of the required properties is missing
+22:41:16.824 DEBUG 'IaC Terraform Sensor' skipped because there is no related file in current project
+22:41:16.825 DEBUG 'IaC CloudFormation Sensor' skipped because there is no related file in current project
+22:41:16.826 DEBUG 'IaC Kubernetes Sensor' skipped because there is no related file in current project
+22:41:16.827 DEBUG 'IaC AzureResourceManager Sensor' skipped because there is no related file in current project
+22:41:16.828 DEBUG 'XML Sensor' skipped because there is no related file in current project
+22:41:16.829 DEBUG 'Generic Test Executions Report' skipped because one of the required properties is missing
+22:41:16.835 DEBUG Sensors : JaCoCo XML Report Importer -> Java Config Sensor -> IaC Docker Sensor -> TextAndSecretsSensor
+22:41:16.838 INFO  Sensor JaCoCo XML Report Importer [jacoco]
+22:41:16.840 INFO  'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+22:41:16.842 INFO  No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+22:41:16.843 INFO  Sensor JaCoCo XML Report Importer [jacoco] (done) | time=6ms
+22:41:16.843 INFO  Sensor Java Config Sensor [iac]
+22:41:16.900 INFO  0 source files to be analyzed
+22:41:16.909 INFO  0/0 source files have been analyzed
+22:41:16.911 INFO  Sensor Java Config Sensor [iac] (done) | time=66ms
+22:41:16.912 INFO  Sensor IaC Docker Sensor [iac]
+22:41:17.104 INFO  0 source files to be analyzed
+22:41:17.104 INFO  0/0 source files have been analyzed
+22:41:17.106 INFO  Sensor IaC Docker Sensor [iac] (done) | time=195ms
+22:41:17.106 INFO  Sensor TextAndSecretsSensor [text]
+22:41:17.106 INFO  Available processors: 2
+22:41:17.106 INFO  Using 2 threads for analysis.
+22:41:17.912 INFO  The property "sonar.tests" is not set. To improve the analysis accuracy, we categorize a file as a test file if any of the following is true:
+  * The filename starts with "test"
+  * The filename contains "test." or "tests."
+  * Any directory in the file path is named: "doc", "docs", "test" or "tests"
+  * Any directory in the file path has a name ending in "test" or "tests"
+
+22:41:17.986 DEBUG git --version returned: git version 2.34.1
+22:41:17.989 INFO  Using git CLI to retrieve untracked files
+22:41:18.106 INFO  Analyzing language associated files and files included via "sonar.text.inclusions" that are tracked by git
+22:41:18.106 DEBUG There are no files to be analyzed
+22:41:18.107 INFO  Sensor TextAndSecretsSensor [text] (done) | time=1000ms
+22:41:18.114 INFO  ------------- Run sensors on project
+22:41:18.309 DEBUG 'Generic Coverage Report' skipped because one of the required properties is missing
+22:41:18.309 DEBUG 'Import external issues report from SARIF file.' skipped because one of the required properties is missing
+22:41:18.310 DEBUG 'Java CPD Block Indexer' skipped because there is no related file in current project
+22:41:18.312 DEBUG Sensors : Zero Coverage Sensor
+22:41:18.312 INFO  Sensor Zero Coverage Sensor
+22:41:18.312 INFO  Sensor Zero Coverage Sensor (done) | time=0ms
+22:41:18.319 INFO  CPD Executor Calculating CPD for 0 files
+22:41:18.320 INFO  CPD Executor CPD calculation finished (done) | time=0ms
+22:41:18.338 INFO  SCM revision ID 'cfce6d945c1b252f02a754c113c6d17261b3d504'
+22:41:18.463 INFO  Analysis report generated in 134ms, dir size=221.0 kB
+22:41:18.506 INFO  Analysis report compressed in 42ms, zip size=20.8 kB
+22:41:18.506 INFO  Analysis report generated in /home/ray/Project3/nodebb-f24-gaurdiansofthegit/.scannerwork/scanner-report
+22:41:18.506 DEBUG Upload report
+22:41:18.518 DEBUG --> POST http://localhost:9000/api/ce/submit?projectKey=GuardiansOfTheGit-Sonar-Qube-Test&projectName=GuardiansOfTheGit-Sonar-Qube-Test (21020-byte body)
+22:41:18.585 DEBUG <-- 200 http://localhost:9000/api/ce/submit?projectKey=GuardiansOfTheGit-Sonar-Qube-Test&projectName=GuardiansOfTheGit-Sonar-Qube-Test (66ms, 76-byte body)
+22:41:18.599 INFO  Analysis report uploaded in 90ms
+22:41:18.600 DEBUG Report metadata written to /home/ray/Project3/nodebb-f24-gaurdiansofthegit/.scannerwork/report-task.txt
+22:41:18.602 INFO  ANALYSIS SUCCESSFUL, you can find the results at: http://localhost:9000/dashboard?id=GuardiansOfTheGit-Sonar-Qube-Test
+22:41:18.603 INFO  Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+22:41:18.607 INFO  More about the report processing at http://localhost:9000/api/ce/task?id=d7745ab0-fa98-486b-8745-93940f80ed51
+22:41:18.620 DEBUG Post-jobs : 
+22:41:18.636 INFO  Analysis total time: 16.561 s
+22:41:18.640 INFO  SonarScanner Engine completed successfully
+22:41:18.683 DEBUG Cleanup org.eclipse.jgit.util.FS$FileStoreAttributes$$Lambda$335/0x00007f537825ca00@2577d6c8 during JVM shutdown
+22:41:18.762 INFO  EXECUTION SUCCESS
+22:41:18.773 INFO  Total time: 19.887s
