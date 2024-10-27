@@ -2,4 +2,5 @@
     "presets": ["@babel/preset-flow"],
     "plugins": ["babel-plugin-syntax-hermes-parser"],
     "ignore": ["src/cli/index.js"]
-}  
+}
+  
