@@ -11,13 +11,13 @@ module.exports = function (app, middleware, controllers) {
 	app.use('/api', router);
 	router.get('/config', [...middlewares, middleware.applyCSRF], helpers.tryRoute(controllers.api.getConfig));
 	// Add the new route handler here
-	router.get('/admin/config', [...middlewares], (req, res) => {
-		const config = {
-			hideSubCategories: true, // or the appropriate value
-			relative_path: '/subdirectory', // or the appropriate value
-		};
-		res.json(config);
-	});
+	// router.get('/admin/config', [...middlewares], (req, res) => {
+	// const config = {
+	// hideSubCategories: true, // or the appropriate value
+	// relative_path: '/subdirectory', // or the appropriate value
+	// };
+	// res.json(config);
+	// });
 	router.get('/self', [...middlewares], helpers.tryRoute(controllers.user.getCurrentUser));
 	router.get('/user/uid/:uid', [...middlewares, middleware.canViewUsers], helpers.tryRoute(controllers.user.getUserByUID));
 	router.get('/user/username/:username', [...middlewares, middleware.canViewUsers], helpers.tryRoute(controllers.user.getUserByUsername));
