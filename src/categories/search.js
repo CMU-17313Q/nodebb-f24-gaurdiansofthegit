@@ -13,7 +13,6 @@ module.exports = function (Categories) {
 		const uid = data.uid || 0;
 		const paginate = data.hasOwnProperty('paginate') ? data.paginate : true;
 		const startTime = process.hrtime();
-
 		let cids = await findCids(query, data.hardCap);
 
 		const result = await plugins.hooks.fire('filter:categories.search', {

@@ -1,5 +1,13 @@
 {
     "node": true,
-    "esversion": 8
+    "esversion": 9,
+    "globals": {
+        "describe": true,
+        "it": true,
+        "before": true,
+        "after": true,
+        "beforeEach": true,
+        "afterEach": true
+      }
     // Add more configuration options here
 }
