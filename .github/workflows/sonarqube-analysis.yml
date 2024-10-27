@@ -1,0 +1,41 @@
+# code from gpt
+name: SonarQube PR Analysis
+
+on:
+  pull_request:
+    branches:
+      - f24  # Triggers only on PRs targeting the `f24` branch
+
+jobs:
+  sonarQubeAnalysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'  # Ensures compatibility with SonarQube server’s Java requirement
+
+    - name: Cache SonarQube packages
+      uses: actions/cache@v2
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar-cache
+        restore-keys: |
+          ${{ runner.os }}-sonar-cache
+
+    - name: Run SonarQube Analysis
+      env:
+        SONAR_HOST_URL: http://localhost:9000  # Replace with your SonarQube server URL
+        SONAR_LOGIN: ${{ secrets.SONAR_TOKEN }}  # Token from GitHub secrets
+      run: |
+        sonar-scanner \
+          -Dsonar.projectKey=GuardiansOfTheGit \
+          -Dsonar.projectName="NodeBB GuardiansOfTheGit Test" \
+          -Dsonar.sources=. \
+          -Dsonar.pullrequest.key=${{ github.event.number }} \
+          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+          -Dsonar.pullrequest.base=f24
