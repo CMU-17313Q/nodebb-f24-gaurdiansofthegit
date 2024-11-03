@@ -1,5 +1,3 @@
-'use strict';
-
 
 define('forum/topic/votes', [
 	'components', 'translator', 'api', 'hooks', 'bootbox', 'alerts', 'bootstrap',
@@ -30,7 +28,9 @@ define('forum/topic/votes', [
 	}
 
 	function destroyTooltip() {
+		/* jshint validthis:true */
 		const $this = $(this);
+		/* jshint validthis:true */
 		const pid = $this.parents('[data-pid]').attr('data-pid');
 		const tooltip = bootstrap.Tooltip.getInstance(this);
 		if (tooltip) {
@@ -41,10 +41,12 @@ define('forum/topic/votes', [
 	}
 
 	function loadDataAndCreateTooltip() {
+		/* jshint validthis:true */
 		const $this = $(this);
 		const el = $this.parent();
 		const pid = el.parents('[data-pid]').attr('data-pid');
 		_showTooltip[pid] = true;
+		/* jshint validthis:true */
 		const tooltip = bootstrap.Tooltip.getInstance(this);
 		if (tooltip) {
 			tooltip.dispose();

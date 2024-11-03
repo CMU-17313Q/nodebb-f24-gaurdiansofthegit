@@ -20,8 +20,10 @@ define('postSelect', ['components'], function (components) {
 
 	function onPostClicked(ev) {
 		ev.stopPropagation();
+		/* jshint validthis:true */
 		const pidClicked = $(this).attr('data-pid');
 		const postEls = $('[component="topic"] [data-pid="' + pidClicked + '"]');
+		/* jshint validthis:true */
 		if (!allowMainPostSelect && parseInt($(this).attr('data-index'), 10) === 0) {
 			return;
 		}

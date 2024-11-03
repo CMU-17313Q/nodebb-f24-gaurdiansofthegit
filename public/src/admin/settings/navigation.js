@@ -54,6 +54,7 @@ define('admin/settings/navigation', [
 	};
 
 	function onSelect() {
+		/* jshint validthis:true */
 		const clickedIndex = $(this).attr('data-index');
 		selectIndex(clickedIndex);
 		return false;
@@ -154,6 +155,7 @@ define('admin/settings/navigation', [
 	}
 
 	function remove() {
+		/* jshint validthis:true */
 		const index = $(this).parents('[data-index]').attr('data-index');
 		$('#active-navigation [data-index="' + index + '"]').remove();
 		$('#enabled [data-index="' + index + '"]').remove();
@@ -161,6 +163,7 @@ define('admin/settings/navigation', [
 	}
 
 	function toggle() {
+		/* jshint validthis:true */
 		const btn = $(this);
 		const disabled = btn.hasClass('enable');
 		const index = btn.parents('[data-index]').attr('data-index');

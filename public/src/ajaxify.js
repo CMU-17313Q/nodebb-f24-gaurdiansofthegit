@@ -455,6 +455,7 @@ ajaxify.widgets = { render: render };
 			dataType: 'text',
 			success: function (script) {
 				// eslint-disable-next-line no-new-func
+				/* jshint -W054 */
 				const renderFunction = new Function('module', script);
 				const moduleObj = { exports: {} };
 				renderFunction(moduleObj);
@@ -514,6 +515,7 @@ $(document).ready(function () {
 	function ajaxifyAnchors() {
 		function hrefEmpty(href) {
 			// eslint-disable-next-line no-script-url
+			/* jshint -W107 */
 			return href === undefined || href === '' || href === 'javascript:;';
 		}
 		const location = document.location || window.location;
@@ -586,6 +588,7 @@ $(document).ready(function () {
 			}
 
 			// eslint-disable-next-line no-script-url
+			/* jshint -W107 */
 			if (hrefEmpty(this.href) || this.protocol === 'javascript:' || href === '#' || href === '') {
 				return e.preventDefault();
 			}
