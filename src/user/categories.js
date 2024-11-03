@@ -8,6 +8,7 @@ const plugins = require('../plugins');
 
 module.exports = function (User) {
 	User.setCategoryWatchState = async function (uid, cids, state) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}
@@ -24,6 +25,7 @@ module.exports = function (User) {
 	};
 
 	User.getCategoryWatchState = async function (uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return {};
 		}
@@ -34,6 +36,7 @@ module.exports = function (User) {
 	};
 
 	User.getIgnoredCategories = async function (uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return [];
 		}
@@ -46,6 +49,7 @@ module.exports = function (User) {
 	};
 
 	User.getWatchedCategories = async function (uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return [];
 		}
@@ -61,6 +65,7 @@ module.exports = function (User) {
 
 	User.getCategoriesByStates = async function (uid, states) {
 		const cids = await categories.getAllCidsFromSet('categories:cid');
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return cids;
 		}

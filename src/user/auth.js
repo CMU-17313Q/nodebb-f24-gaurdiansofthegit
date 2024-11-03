@@ -12,6 +12,7 @@ module.exports = function (User) {
 	User.auth = {};
 
 	User.auth.logAttempt = async function (uid, ip) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}
@@ -38,6 +39,7 @@ module.exports = function (User) {
 	};
 
 	User.auth.getFeedToken = async function (uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}
@@ -100,6 +102,7 @@ module.exports = function (User) {
 	}
 
 	User.auth.addSession = async function (uid, sessionId) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}

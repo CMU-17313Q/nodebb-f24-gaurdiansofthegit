@@ -38,8 +38,8 @@
         var elementWidth = $el.innerWidth(),
             elementHeight = $el.innerHeight(),
             elementAspectRatio = elementWidth / elementHeight;
-            imageAspectRatio = image.width / image.height,
-            scale = 1;
+            let imageAspectRatio = image.width / image.height;
+            let scale = 1;
 
         if (imageAspectRatio >= elementAspectRatio) {
           scale = elementHeight / image.height;

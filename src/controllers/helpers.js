@@ -482,6 +482,7 @@ helpers.formatApiResponse = async (statusCode, res, payload) => {
 
 		// Update status code based on some common error codes
 		switch (message) {
+			/* jshint -W086 */
 			case '[[error:user-banned]]':
 				Object.assign(response, await generateBannedResponse(res));
 				// intentional fall through
@@ -498,6 +499,7 @@ helpers.formatApiResponse = async (statusCode, res, payload) => {
 				statusCode = 404;
 				break;
 		}
+		/* jshint +W086 */
 
 		if (message.startsWith('[[error:required-parameters-missing, ')) {
 			const params = message.slice('[[error:required-parameters-missing, '.length, -2).split(' ');

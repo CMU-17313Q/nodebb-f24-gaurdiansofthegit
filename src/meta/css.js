@@ -13,7 +13,9 @@ const file = require('../file');
 const minifier = require('./minifier');
 const utils = require('../utils');
 
+/* jshint -W079 */
 const CSS = module.exports;
+/* jshint +W079 */
 
 CSS.supportedSkins = [
 	'cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal', 'litera',

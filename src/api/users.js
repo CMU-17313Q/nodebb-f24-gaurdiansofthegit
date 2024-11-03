@@ -704,6 +704,7 @@ usersAPI.generateExport = async (caller, { uid, type }) => {
 	if (!validTypes.includes(type)) {
 		throw new Error('[[error:invalid-data]]');
 	}
+	// jshint -W018
 	if (!utils.isNumber(uid) || !(parseInt(uid, 10) > 0)) {
 		throw new Error('[[error:invalid-uid]]');
 	}

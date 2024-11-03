@@ -510,6 +510,7 @@ const utils = {
 	isAndroidBrowser: function () {
 		// http://stackoverflow.com/questions/9286355/how-to-detect-only-the-native-android-browser
 		const nua = navigator.userAgent;
+		// jshint -W018
 		return ((nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1) && !(nua.indexOf('Chrome') > -1));
 	},
 

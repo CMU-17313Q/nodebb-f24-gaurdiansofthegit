@@ -120,6 +120,7 @@ define('settings', ['hooks', 'alerts'], function (hooks, alerts) {
 			for (let i = 0; i < array.length; i += 1) {
 				let value = array[i];
 				if (trim) {
+					// jshint -W018
 					if (value === !!value) {
 						value = +value;
 					} else if (value && typeof value.trim === 'function') {

@@ -85,7 +85,7 @@ describe('Categories', () => {
 			};
 
 			const renderedHtml = renderTemplate(brandTemplateContent, data);
-			console.log(renderedHtml); // Debugging step: Print rendered HTML
+			// console.log(renderedHtml); // Debugging step: Print rendered HTML
 
 			assert(renderedHtml.includes('logo.png'), 'Logo is rendered.');
 			// const expectedAltText = 'alt="Company Logo"';
@@ -275,8 +275,8 @@ describe('Categories', () => {
 			};
 			const renderedHtml = renderTemplate(brandTemplateContent, data);
 
-			console.log('Debug: Site title in data:', data.config.siteTitle);
-			console.log('Debug: Rendered HTML:', renderedHtml);
+			// console.log('Debug: Site title in data:', data.config.siteTitle);
+			// console.log('Debug: Rendered HTML:', renderedHtml);
 
 			assert(!renderedHtml.includes('NodeBB'), 'Site title should be rendered.');
 		});

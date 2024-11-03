@@ -130,6 +130,7 @@ module.exports = function (User) {
 
 	async function incrementUserFieldAndSetBy(uid, field, set, value) {
 		value = parseInt(value, 10);
+		// jshint -W018
 		if (!value || !field || !(parseInt(uid, 10) > 0)) {
 			return;
 		}
