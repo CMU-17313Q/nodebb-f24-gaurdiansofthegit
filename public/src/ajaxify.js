@@ -454,8 +454,10 @@ ajaxify.widgets = { render: render };
 			cache: false,
 			dataType: 'text',
 			success: function (script) {
+				/* jshint -W054 */
 				// eslint-disable-next-line no-new-func
 				const renderFunction = new Function('module', script);
+				/* jshint +W054 */
 				const moduleObj = { exports: {} };
 				renderFunction(moduleObj);
 				callback(moduleObj.exports);
