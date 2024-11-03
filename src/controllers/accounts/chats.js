@@ -101,6 +101,7 @@ chatsController.redirectToMessage = async function (req, res, next) {
 		return next();
 	}
 	const index = await db.sortedSetRank(`chat:room:${roomId}:mids`, mid);
+	// jshint -W018
 	if (!(parseInt(index, 10) >= 0)) {
 		return next();
 	}

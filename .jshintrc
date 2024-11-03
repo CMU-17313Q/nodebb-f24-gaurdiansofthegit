@@ -44,5 +44,6 @@
   "nocomma": true,
   "proto": true,
   "unused": false,
-  "funcscope": true
+  "funcscope": true,
+  "-W018": false
 }

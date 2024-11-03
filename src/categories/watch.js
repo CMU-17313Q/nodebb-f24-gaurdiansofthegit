@@ -12,6 +12,7 @@ module.exports = function (Categories) {
 	};
 
 	Categories.isIgnored = async function (cids, uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return cids.map(() => false);
 		}
@@ -20,6 +21,7 @@ module.exports = function (Categories) {
 	};
 
 	Categories.getWatchState = async function (cids, uid) {
+		/* jshint -W018 */
 		if (!(parseInt(uid, 10) > 0)) {
 			return cids.map(() => Categories.watchStates.notwatching);
 		}
