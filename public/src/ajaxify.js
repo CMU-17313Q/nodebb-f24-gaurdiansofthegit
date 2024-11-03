@@ -515,8 +515,10 @@ $(document).ready(function () {
 
 	function ajaxifyAnchors() {
 		function hrefEmpty(href) {
+			/* jshint -W107 */
 			// eslint-disable-next-line no-script-url
 			return href === undefined || href === '' || href === 'javascript:;';
+			/* jshint +W107 */
 		}
 		const location = document.location || window.location;
 		const rootUrl = location.protocol + '//' + (location.hostname || location.host) + (location.port ? ':' + location.port : '');
@@ -587,8 +589,10 @@ $(document).ready(function () {
 				return;
 			}
 
+			/* jshint -W107 */
 			// eslint-disable-next-line no-script-url
 			if (hrefEmpty(this.href) || this.protocol === 'javascript:' || href === '#' || href === '') {
+			/* jshint +W107 */
 				return e.preventDefault();
 			}
 

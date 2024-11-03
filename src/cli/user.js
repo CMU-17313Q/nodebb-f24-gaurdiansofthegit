@@ -1,6 +1,8 @@
 'use strict';
 
+/* jshint -W079 */
 const { Command, Option } = require('commander');
+/* jshint +W079 */
 
 module.exports = () => {
 	const userCmd = new Command('user')
