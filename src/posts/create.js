@@ -22,7 +22,7 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
-		const [isEnglish, translatedContent] = await translate.translate(data)
+		const [isEnglish, translatedContent] = await translate.translate(data);
 		// added a variable to track the type of post
 		const isAnonymous = data.isAnonymous || false;
 		const isPrivate = data.isPrivate || false;
