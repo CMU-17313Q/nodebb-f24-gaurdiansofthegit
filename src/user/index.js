@@ -170,6 +170,7 @@ User.getPrivileges = async function (uid) {
 };
 
 User.isPrivileged = async function (uid) {
+	// jshint -W018
 	if (!(parseInt(uid, 10) > 0)) {
 		return false;
 	}

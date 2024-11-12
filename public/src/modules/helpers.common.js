@@ -295,6 +295,7 @@ module.exports = function (utils, Benchpress, relative_path) {
 
 		// Try to use root context if passed-in userObj is undefined
 		if (!userObj) {
+			/* jshint validthis:true */
 			userObj = this;
 		}
 		classNames = classNames || '';

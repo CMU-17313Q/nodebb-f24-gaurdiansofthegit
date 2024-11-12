@@ -1,0 +1,28 @@
+name: JSHint Linting
+
+on:
+  pull_request:
+    branches:
+      - f24
+  push:
+    branches:
+      - f24
+
+jobs:
+  jshint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install JSHint
+        run: npm install -g jshint
+
+      - name: Run JSHint
+        run: jshint . --exclude node_modules,public # Adjust exclusions as needed

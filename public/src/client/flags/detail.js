@@ -14,7 +14,7 @@ define('forum/flags/detail', [
 			const action = this.getAttribute('data-action');
 			const uid = $(this).parents('[data-uid]').attr('data-uid');
 			const noteEl = document.getElementById('note');
-
+			/* jshint -W086 */
 			switch (action) {
 				case 'assign':
 					$('#assignee').val(app.user.uid);
@@ -32,6 +32,7 @@ define('forum/flags/detail', [
 					}).catch(alerts.error);
 					break;
 				}
+				/* jshint +W086 */
 
 				case 'addEditNote': {
 					const noteEl = this.closest('[component="flag/note"]');

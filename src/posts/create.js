@@ -38,7 +38,7 @@ module.exports = function (Posts) {
 		// Load bad words list
 		const badWords = loadBadWords();
 		// Check content against bad words
-		//console.log('Checking content:', content); // Log the content being checked
+		// console.log('Checking content:', content); // Log the content being checked
 		const detectedBadWords = badWords.filter(regex => regex.test(content)).map(regex => content.match(regex)[0]);
 		if (detectedBadWords.length > 0) {
 			console.log('Detected bad words:', detectedBadWords); // Log the bad words detected
@@ -93,15 +93,25 @@ module.exports = function (Posts) {
 	// Copilot assisted code
 	// Function to load bad words from the public folder
 	function loadBadWords() {
+<<<<<<< HEAD
 		//console.log('Loading bad words'); // Debugging statement
 		const badWordsFilePath = path.join(__dirname, '../../public/bad-words.txt');
 		//console.log('Bad words file path:', badWordsFilePath); // Debug statement
+=======
+		// console.log('Loading bad words'); // Debugging statement
+		const badWordsFilePath = path.join(__dirname, '../../public/bad-words.txt');
+		// console.log('Bad words file path:', badWordsFilePath); // Debug statement
+>>>>>>> e93ae9c30ca79a41c803677f375dd3b99db511c5
 		const badWords = fs.readFileSync(badWordsFilePath, 'utf8')
 			.split('\n')
 			.map(word => word.trim())
 			.filter(word => word.length > 0)
 			.map(word => new RegExp(`\\b${word}\\b`, 'i')); // Create regex for whole word match
+<<<<<<< HEAD
 		//console.log('Bad words:', badWords); // Debugging statement
+=======
+		// console.log('Bad words:', badWords); // Debugging statement
+>>>>>>> e93ae9c30ca79a41c803677f375dd3b99db511c5
 		return badWords;
 	}
 

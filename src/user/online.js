@@ -7,6 +7,7 @@ const meta = require('../meta');
 
 module.exports = function (User) {
 	User.updateLastOnlineTime = async function (uid) {
+		// jshint -W018
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}
@@ -19,6 +20,7 @@ module.exports = function (User) {
 	};
 
 	User.updateOnlineUsers = async function (uid) {
+		// jshint -W018
 		if (!(parseInt(uid, 10) > 0)) {
 			return;
 		}

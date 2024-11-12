@@ -1,5 +1,3 @@
-'use strict';
-
 
 define('forum/post-queue', [
 	'categoryFilter', 'categorySelector', 'api', 'alerts', 'bootbox',

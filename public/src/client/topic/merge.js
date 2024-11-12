@@ -85,6 +85,7 @@ define('forum/topic/merge', ['search', 'alerts', 'api'], function (search, alert
 		if (!modal) {
 			return;
 		}
+		/* jshint validthis:true */
 		const topicEl = $(this).parents('[component="category/topic"]');
 		const isSelected = topicEl.hasClass('selected');
 		const tid = topicEl.attr('data-tid');

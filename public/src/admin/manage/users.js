@@ -562,6 +562,7 @@ define('admin/manage/users', [
 		}
 
 		function createUser() {
+			/* jshint validthis:true */
 			const modal = this;
 			const username = document.getElementById('create-user-name').value;
 			const email = document.getElementById('create-user-email').value;
