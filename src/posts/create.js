@@ -12,6 +12,7 @@ const topics = require('../topics');
 const categories = require('../categories');
 const groups = require('../groups');
 const privileges = require('../privileges');
+const translate = require('../translate');
 
 module.exports = function (Posts) {
 	Posts.create = async function (data) {
@@ -21,6 +22,7 @@ module.exports = function (Posts) {
 		const content = data.content.toString();
 		const timestamp = data.timestamp || Date.now();
 		const isMain = data.isMain || false;
+		const [isEnglish, translatedContent] = await translate.translate(data);
 		// added a variable to track the type of post
 		const isAnonymous = data.isAnonymous || false;
 		const isPrivate = data.isPrivate || false;
@@ -41,7 +43,7 @@ module.exports = function (Posts) {
 		// console.log('Checking content:', content); // Log the content being checked
 		const detectedBadWords = badWords.filter(regex => regex.test(content)).map(regex => content.match(regex)[0]);
 		if (detectedBadWords.length > 0) {
-			console.log('Detected bad words:', detectedBadWords); // Log the bad words detected
+			console.log('Bad words detected:', detectedBadWords); // Log the bad words detected
 			throw new Error(`[[error:bad-word-detected, ${detectedBadWords.join(', ')}]]`);
 		}
 
@@ -52,6 +54,8 @@ module.exports = function (Posts) {
 			tid: tid,
 			content: content,
 			timestamp: timestamp,
+			translatedContent: translatedContent,
+			isEnglish: isEnglish,
 			isPrivate: isPrivate,
 			isAnonymous: isAnonymous,
 		};
