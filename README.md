@@ -1,6 +1,6 @@
-### Guardians of the Git Team Members
+#3 Guardians of the Git Team Members
 
-## Fatima Al-Haddad
+* Fatima Al-Haddad *
 ## Safa Amin
 ## Sarim Faraz
 ## Rayyan Ahmed
