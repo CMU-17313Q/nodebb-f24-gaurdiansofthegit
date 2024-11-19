@@ -1,10 +1,10 @@
-#3 Guardians of the Git Team Members
+## Guardians of the Git Team Members
 
-* Fatima Al-Haddad *
-## Safa Amin
-## Sarim Faraz
-## Rayyan Ahmed
-## May Thu Khin
+* Fatima Al-Haddad
+* Safa Amin
+* Sarim Faraz
+* Rayyan Ahmed
+* May Thu Khin
 
 # ![NodeBB](public/images/sm-card.png)
 
