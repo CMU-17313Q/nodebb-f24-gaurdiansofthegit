@@ -1,3 +1,11 @@
+### Guardians of the Git Team Members
+
+## Fatima Al-Haddad
+## Safa Amin
+## Sarim Faraz
+## Rayyan Ahmed
+## May Thu Khin
+
 # ![NodeBB](public/images/sm-card.png)
 
 [![Workflow](https://github.com/CMU-313/NodeBB/actions/workflows/test.yaml/badge.svg)](https://github.com/CMU-313/NodeBB/actions/workflows/test.yaml)
